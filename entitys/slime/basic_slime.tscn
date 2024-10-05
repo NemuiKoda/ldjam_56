@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2rlnjpscqq8y"]
+[gd_scene load_steps=10 format=3 uid="uid://d2rlnjpscqq8y"]
 
 [ext_resource type="Script" path="res://entitys/slime/basic_slime.gd" id="1_1ew2l"]
 [ext_resource type="Texture2D" uid="uid://w4hlhy5ibib2" path="res://assets/OurAssets/SlimeBase.png" id="2_fd8qp"]
+[ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="3_mx3bo"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nhk8n"]
 
@@ -97,3 +98,9 @@ shape = SubResource("CircleShape2D_8xjmw")
 libraries = {
 "": SubResource("AnimationLibrary_mpytp")
 }
+
+[node name="InteractArea" parent="." instance=ExtResource("3_mx3bo")]
+scale = Vector2(0.5, 0.5)
+interact_label = "BlueSlime"
+interact_type = "blue_slime"
+interact_value = "blue"
