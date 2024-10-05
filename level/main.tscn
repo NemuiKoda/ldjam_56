@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://m2ww0i5h4h31"]
+[gd_scene load_steps=14 format=3 uid="uid://dqbc3g2gp4iyt"]
 
 [ext_resource type="Texture2D" uid="uid://bfrchcl6r67s6" path="res://assets/tilemap/TX Tileset Stone Ground.png" id="1_owgqh"]
 [ext_resource type="Texture2D" uid="uid://c71n2dtonok6m" path="res://assets/tilemap/TX Tileset Wall.png" id="2_1cpqf"]
@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ce40t2k0flisn" path="res://assets/tilemap/TX Struct.png" id="4_uxjkr"]
 [ext_resource type="Texture2D" uid="uid://bntafodq0ncxe" path="res://assets/tilemap/TX Props.png" id="5_chedb"]
 [ext_resource type="Script" path="res://level/spawner.gd" id="6_i2x7v"]
-[ext_resource type="PackedScene" uid="uid://bbgekotruutm4" path="res://entitys/player/player.tscn" id="6_wsmm1"]
+[ext_resource type="PackedScene" path="res://entitys/player/player.tscn" id="6_wsmm1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewmak"]
 texture = ExtResource("1_owgqh")

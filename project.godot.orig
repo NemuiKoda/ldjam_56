@@ -12,10 +12,12 @@ config_version=5
 
 config/name="LDJam56"
 <<<<<<< HEAD
+
 run/main_scene="res://level/main.tscn"
+
 =======
 run/main_scene="res://test.tscn"
->>>>>>> ea802ed (..)
+>>>>>>> ff9b6ca464084b1246bcd79df1bf40faccab69ae
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
