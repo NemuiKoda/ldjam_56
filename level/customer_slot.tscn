@@ -16,6 +16,7 @@ scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="customer_slot_area"]
 material = SubResource("CanvasItemMaterial_1tply")
+scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_m1p5s")
 debug_color = Color(0.570521, 0.389229, 1, 0.42)
 

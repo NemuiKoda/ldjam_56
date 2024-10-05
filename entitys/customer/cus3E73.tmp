@@ -22,8 +22,6 @@ animations = [{
 script = ExtResource("1_r3ef4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.636565, 0.412172, 0.207299, 1)
-self_modulate = Color(0.540845, 0.352512, 0.661235, 1)
 scale = Vector2(0.234, 0.2)
 sprite_frames = SubResource("SpriteFrames_6whk7")
 
@@ -33,13 +31,7 @@ shape = SubResource("CircleShape2D_m00pt")
 [node name="chat_detection_area" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
-light_mask = 2
-visibility_layer = 2
-scale = Vector2(3, 3)
+scale = Vector2(5, 5)
 shape = SubResource("CircleShape2D_nji4o")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 30.0
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
