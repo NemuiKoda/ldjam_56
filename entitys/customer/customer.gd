@@ -9,6 +9,8 @@ enum {
 	WALKING
 }
 
+var slushi_requests = ["BLUE", "RED", "GREEN"]
+
 var is_in_slot = false
 var is_waiting_for_order = false
 var received_order = false
@@ -24,6 +26,7 @@ func _ready():
 	randomize()
 	customer_slots = get_tree().get_root().get_node("World/CustomerSlots")
 	slot = get_slot()
+	$InteractionComponents/InteractArea.interact_label = choose(slushi_requests)
 
 func _process(delta: float):
 	#if current_state == 0:
