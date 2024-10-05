@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=16 format=3 uid="uid://dqbc3g2gp4iyt"]
-
+[gd_scene load_steps=17 format=3 uid="uid://m2ww0i5h4h31"]
 
 [ext_resource type="Texture2D" uid="uid://bfrchcl6r67s6" path="res://assets/tilemap/TX Tileset Stone Ground.png" id="1_owgqh"]
 [ext_resource type="Texture2D" uid="uid://c71n2dtonok6m" path="res://assets/tilemap/TX Tileset Wall.png" id="2_1cpqf"]
@@ -8,11 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://ce40t2k0flisn" path="res://assets/tilemap/TX Struct.png" id="4_uxjkr"]
 [ext_resource type="Texture2D" uid="uid://bntafodq0ncxe" path="res://assets/tilemap/TX Props.png" id="5_chedb"]
 [ext_resource type="Script" path="res://level/spawner.gd" id="6_i2x7v"]
-
-[ext_resource type="PackedScene" path="res://entitys/player/player.tscn" id="6_wsmm1"]
+[ext_resource type="PackedScene" uid="uid://bbgekotruutm4" path="res://entitys/player/player.tscn" id="6_wsmm1"]
 [ext_resource type="PackedScene" uid="uid://dkds6rp3a4db8" path="res://level/customer_slots.tscn" id="8_mg0jy"]
 [ext_resource type="PackedScene" uid="uid://bd6p1h607yyh7" path="res://entitys/customer/customer.tscn" id="9_mk5qq"]
-
+[ext_resource type="PackedScene" uid="uid://ba1y2t7o3pkly" path="res://interactible/slushmachine/slush_machine.tscn" id="10_0g232"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewmak"]
 texture = ExtResource("1_owgqh")
@@ -404,10 +401,11 @@ position = Vector2(731, 284)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 
-
 [node name="CustomerSlots" parent="." instance=ExtResource("8_mg0jy")]
 position = Vector2(-183, 249)
 
 [node name="customer" parent="." instance=ExtResource("9_mk5qq")]
 position = Vector2(1, 360)
 
+[node name="slushMachine" parent="." instance=ExtResource("10_0g232")]
+position = Vector2(223, 234)
