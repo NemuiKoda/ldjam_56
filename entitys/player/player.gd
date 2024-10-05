@@ -3,8 +3,6 @@ extends CharacterBody2D
 @export var move_speed : float = 250
 @onready var animation = $AnimationPlayer
 
-
-
 func _physics_process(delta):
 	var input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),

@@ -1,14 +1,15 @@
 [gd_scene load_steps=8 format=3 uid="uid://bbgekotruutm4"]
 
 [ext_resource type="Script" path="res://entitys/player/player.gd" id="1_hq055"]
-[ext_resource type="Texture2D" uid="uid://dolxark66ox3j" path="res://assets/OurAssets/Player.png" id="2_yd5he"]
+[ext_resource type="Texture2D" uid="uid://duo78yh4av8bh" path="res://assets/OurAssets/Player32x32.png" id="2_lwj5a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nwtlq"]
 size = Vector2(9, 14)
 
 [sub_resource type="Animation" id="Animation_wkgip"]
 resource_name = "idle"
-length = 0.6
+length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -16,14 +17,14 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 3, 2]
+"values": [0, 4, 5, 4]
 }
 
-[sub_resource type="Animation" id="Animation_ilbl7"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_senat"]
+resource_name = "RESET"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -37,9 +38,9 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_gi5al"]
+[sub_resource type="Animation" id="Animation_ilbl7"]
 resource_name = "walking"
-length = 0.6
+length = 0.8
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -48,17 +49,17 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(7.45058e-09, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [3, 6, 1, 4, 5]
+"values": [1, 2, 3, 4, 5, 6, 7, 4]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ys07t"]
 _data = {
-"RESET": SubResource("Animation_ilbl7"),
+"RESET": SubResource("Animation_senat"),
 "idle": SubResource("Animation_wkgip"),
-"walking": SubResource("Animation_gi5al")
+"walking": SubResource("Animation_ilbl7")
 }
 
 [node name="Player" type="CharacterBody2D"]
@@ -66,9 +67,9 @@ scale = Vector2(3, 3)
 script = ExtResource("1_hq055")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_yd5he")
-hframes = 16
-vframes = 16
+texture = ExtResource("2_lwj5a")
+hframes = 8
+vframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 0)

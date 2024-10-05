@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0fspjywe0ux"]
+[gd_scene load_steps=14 format=3 uid="uid://m2ww0i5h4h31"]
 
 [ext_resource type="Texture2D" uid="uid://bfrchcl6r67s6" path="res://assets/tilemap/TX Tileset Stone Ground.png" id="1_owgqh"]
 [ext_resource type="Texture2D" uid="uid://c71n2dtonok6m" path="res://assets/tilemap/TX Tileset Wall.png" id="2_1cpqf"]
@@ -389,6 +389,7 @@ layer_2/tile_data = PackedInt32Array(-786406, 917508, 0, -720874, 720900, 5, -72
 script = ExtResource("6_i2x7v")
 
 [node name="spawnarea" type="Polygon2D" parent="Node2D"]
+visible = false
 color = Color(1, 0.172549, 0.0313726, 0.301961)
 polygon = PackedVector2Array(-158, -414, 1057, -416, 1057, 287, 352, 288, 352, -124, -161, -128)
 
