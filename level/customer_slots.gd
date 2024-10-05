@@ -15,10 +15,7 @@ func get_free_slots():
 	print("Entered get_free_slots() in customer_slots")
 	var open_slots = []
 	for slot in customer_slots:
-		print(slot)
-		var occupied = slot.get_is_occupied
-		print(occupied)
-		if not occupied:
+		if slot.is_occupied:
 			print("occupied")
 		else:
 			open_slots.append(slot)
