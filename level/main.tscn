@@ -398,6 +398,7 @@ polygon = PackedVector2Array(-158, -414, 1057, -416, 1057, 287, 352, 288, 352, -
 
 [node name="Player" parent="." instance=ExtResource("6_wsmm1")]
 position = Vector2(731, 284)
+move_speed = 250.0
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 
