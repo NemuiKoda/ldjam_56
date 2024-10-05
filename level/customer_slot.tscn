@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://w5x60v6ec45x"]
+
+[ext_resource type="Script" path="res://level/customer_slot.gd" id="1_d7n7e"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1tply"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m1p5s"]
+
+[node name="CustomerSlot" type="Node2D"]
+script = ExtResource("1_d7n7e")
+
+[node name="customer_slot_area" type="Area2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="customer_slot_area"]
+material = SubResource("CanvasItemMaterial_1tply")
+scale = Vector2(0.8, 0.8)
+shape = SubResource("CircleShape2D_m1p5s")
+debug_color = Color(0.570521, 0.389229, 1, 0.42)
+
+[connection signal="body_entered" from="customer_slot_area" to="." method="_on_customer_slot_area_body_entered"]
+[connection signal="body_exited" from="customer_slot_area" to="." method="_on_customer_slot_area_body_exited"]
