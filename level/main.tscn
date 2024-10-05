@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://m2ww0i5h4h31"]
+[gd_scene load_steps=15 format=3 uid="uid://m2ww0i5h4h31"]
 
 [ext_resource type="Texture2D" uid="uid://bfrchcl6r67s6" path="res://assets/tilemap/TX Tileset Stone Ground.png" id="1_owgqh"]
 [ext_resource type="Texture2D" uid="uid://c71n2dtonok6m" path="res://assets/tilemap/TX Tileset Wall.png" id="2_1cpqf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bntafodq0ncxe" path="res://assets/tilemap/TX Props.png" id="5_chedb"]
 [ext_resource type="Script" path="res://level/spawner.gd" id="6_i2x7v"]
 [ext_resource type="PackedScene" uid="uid://bbgekotruutm4" path="res://entitys/player/player.tscn" id="6_wsmm1"]
+[ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="8_jb2e1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewmak"]
 texture = ExtResource("1_owgqh")
@@ -397,3 +398,9 @@ polygon = PackedVector2Array(-158, -414, 1057, -416, 1057, 287, 352, 288, 352, -
 position = Vector2(731, 284)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
+
+[node name="InteractArea" parent="." instance=ExtResource("8_jb2e1")]
+position = Vector2(588, 34)
+interact_label = "InteractionTest"
+interact_type = "print_text"
+interact_value = "Yay it worked"
