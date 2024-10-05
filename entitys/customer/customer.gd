@@ -9,16 +9,12 @@ enum {
 	WALKING
 }
 
-var slushi_requests = ["BLUE", "RED", "GREEN"]
+var slushi_requests = ["BLUE", "RED", "GREEN", "PURPLE", "CYAN", "YELLOW", "WHITE"]
 
 var is_in_slot = false
-var is_waiting_for_order = false
 var received_order = false
 
 var slot
-
-var player
-var player_in_chat_zone = false
 
 var customer_slots
 
@@ -44,7 +40,7 @@ func _process(delta: float):
 	if received_order:
 		leave()
 		
-	if !is_in_slot and !is_waiting_for_order:
+	if !is_in_slot:
 		if slot and !is_in_slot:
 			dir = global_position.direction_to(slot.global_position)
 			position += dir * speed * delta
