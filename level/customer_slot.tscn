@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://w5x60v6ec45x"]
+[gd_scene load_steps=4 format=3 uid="uid://w5x60v6ec45x"]
 
 [ext_resource type="Script" path="res://level/customer_slot.gd" id="1_d7n7e"]
-[ext_resource type="Texture2D" uid="uid://btd6e27r4x8pu" path="res://icon.svg" id="2_rixi7"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1tply"]
 
@@ -19,10 +18,6 @@ material = SubResource("CanvasItemMaterial_1tply")
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_m1p5s")
 debug_color = Color(0.570521, 0.389229, 1, 0.42)
-
-[node name="Sprite2D" type="Sprite2D" parent="customer_slot_area"]
-scale = Vector2(0.121094, 0.0996094)
-texture = ExtResource("2_rixi7")
 
 [connection signal="body_entered" from="customer_slot_area" to="." method="_on_customer_slot_area_body_entered"]
 [connection signal="body_exited" from="customer_slot_area" to="." method="_on_customer_slot_area_body_exited"]

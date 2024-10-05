@@ -22,7 +22,7 @@ var customer_slots
 
 func _ready():
 	randomize()
-	customer_slots = get_tree().get_root().get_node("Test/CustomerSlots")
+	customer_slots = get_tree().get_root().get_node("World/CustomerSlots")
 	slot = get_slot()
 
 func _process(delta: float):
