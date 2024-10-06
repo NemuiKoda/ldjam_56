@@ -5,6 +5,10 @@
 [node name="Spawner" type="Node2D"]
 script = ExtResource("1_p56m4")
 
+[node name="SpawnArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SpawnArea"]
+
 [node name="SpawnTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 

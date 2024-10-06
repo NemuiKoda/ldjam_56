@@ -18,6 +18,8 @@ var slot
 
 var customer_slots
 
+signal unit_removed
+
 func _ready():
 	randomize()
 	customer_slots = get_tree().get_root().get_node("World/CustomerSlots")
@@ -65,10 +67,10 @@ func receive_order():
 
 func leave():
 	position += Vector2(0,100) * speed * 0.00003
+	emit_signal("unit_removed")
 	if global_position > Vector2(0,400):
 		("I'M LEAVING")
 		self.queue_free()
-
 
 func _on_timer_timeout() -> void:
 	#received_order = true
