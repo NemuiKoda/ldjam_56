@@ -22,7 +22,7 @@ signal unit_removed
 
 func _ready():
 	randomize()
-	customer_slots = get_tree().get_root().get_node("World/CustomerHandler/CustomerSlots")
+	customer_slots = get_tree().get_root().get_node("World/CustomerSlots")
 	slot = get_slot()
 	$InteractionComponents/InteractArea.interact_label = choose(slushi_requests)
 

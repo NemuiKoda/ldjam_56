@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgm7tm0rw1tie"]
+
+[ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="1_lr8w0"]
+[ext_resource type="Texture2D" uid="uid://b0cmq5t0b3qb2" path="res://assets/OurAssets/Props.png" id="2_xrj5c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70by7"]
+atlas = ExtResource("2_xrj5c")
+region = Rect2(16, 64, 16, 16)
+
+[node name="Slushy_Cyan" type="StaticBody2D"]
+
+[node name="InteractArea" parent="." instance=ExtResource("1_lr8w0")]
+scale = Vector2(0.5, 0.5)
+interact_label = "Collectable"
+interact_type = "item"
+interact_value = "cyan_slushy"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_70by7")

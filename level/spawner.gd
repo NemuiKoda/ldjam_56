@@ -13,7 +13,7 @@ func _ready():
 	spawn_polygon = polygon_node.polygon
 
 	# Lade die Szene, die gespawnt werden soll
-	node_to_spawn = preload("res://entitys/slime/basic_slime.tscn")
+	node_to_spawn = preload("res://entitys/slime/red_slime.tscn")
 
 	# Spawne den Node
 	var spawn_timer = Timer.new()
