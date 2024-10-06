@@ -51,7 +51,7 @@ func set_purple_count(purple_count: int):
 func get_purple_count():
 	return purple_count
 
-func set_yellow_count(blue_count: int):
+func set_yellow_count(yellow_count: int):
 	self.yellow_count = yellow_count
 	yellow_label.text = str(yellow_count)
 

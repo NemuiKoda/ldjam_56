@@ -9,18 +9,25 @@ extends CharacterBody2D
 @onready var container_left = $"../slushMachine/container_left/AnimationPlayer"
 @onready var container_middle = $"../slushMachine/container_middle/AnimationPlayer"
 @onready var container_right = $"../slushMachine/container_right/AnimationPlayer"
+@onready var container_left_time = $"../slushMachine/container_left"
+@onready var container_middle_time = $"../slushMachine/container_middle"
+@onready var container_right_time = $"../slushMachine/container_right"
 @onready var chest_blue = $"../ChestBlue"
 @onready var chest_red = $"../ChestRed"
 @onready var chest_green = $"../ChestGreen"
 @onready var slushy_production_location = $"../Slushyspawn"
 @onready var inside = $"../Inside"
+@onready var moneyUI = $Money
+@onready var slushyUI = $Slushies
+@onready var upgradeUI = $Upgrades
+@onready var customerSpawner = $"../Spawner"
 
 #Inventory
 var slushy_inventory = [0,0,0,0,0,0,0] #[blue,red,green,cyan,yellow,purple,white]
-var money = 0
+var money = 150
 
 #Upgrades
-var maxmovementupgrade = 4
+var maxmovementupgrade = 3
 var movementLevel = 0
 var movementupgrade= [
 	[0, 250],
@@ -30,7 +37,7 @@ var movementupgrade= [
 ]
 
 
-var maxcustomeupgrader = 4
+var maxcustomeupgrader = 3
 var customerLevel = 0
 var customerupgrade= [
 	[0, 1],
@@ -39,7 +46,7 @@ var customerupgrade= [
 	[150, 4]
 ]
 
-var maxproductionupgrades= 3
+var maxproductionupgrades= 2
 var productionLevel = 0
 var productionupgrade= [
 	[0, 0.33],
@@ -57,7 +64,20 @@ func _ready():
 	update_interactions()
 
 func _process(delta: float):
-	move_speed = movementupgrade[movementLevel][1]
+	moneyUI.set_value(money)
+	slushyUI.set_blue_count(slushy_inventory[0])
+	slushyUI.set_red_count(slushy_inventory[1])
+	slushyUI.set_green_count(slushy_inventory[2])
+	slushyUI.set_cyan_count(slushy_inventory[3])
+	slushyUI.set_yellow_count(slushy_inventory[4])
+	slushyUI.set_purple_count(slushy_inventory[5])
+	slushyUI.set_white_count(slushy_inventory[6])
+	customerSpawner.spawn_units_max_amount = customerupgrade[customerLevel][1]
+	slushy_machine_timer.wait_time = (6/productionupgrade[productionLevel][1])
+	container_left_time.set_animation_speed(productionupgrade[productionLevel][1])
+	container_middle_time.set_animation_speed(productionupgrade[productionLevel][1])
+	container_right_time.set_animation_speed(productionupgrade[productionLevel][1])
+	
 
 func _physics_process(_delta):
 	var input_direction = Vector2(
@@ -227,31 +247,37 @@ func execute_interaction():
 							if slushy_inventory[0] > 0:
 								slushy_inventory[0] = slushy_inventory[0] - 1
 								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
+								money += cur_interaction.get_parent().get_parent().getValue()
 						"RED":
 							if slushy_inventory[1] > 0:
 								slushy_inventory[1] = slushy_inventory[1] - 1
 								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
+								money += cur_interaction.get_parent().get_parent().getValue()
 						"GREEN":
 							if slushy_inventory[2] > 0:
 								slushy_inventory[2] = slushy_inventory[2] - 1
 								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
+								money += cur_interaction.get_parent().get_parent().getValue()
 						"CYAN": 
 							if slushy_inventory[3] > 0:
 								slushy_inventory[3] = slushy_inventory[3] - 1
 								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
+								money += cur_interaction.get_parent().get_parent().getValue()
 						"YELLOW":
 							if slushy_inventory[4] > 0:
 								slushy_inventory[4] = slushy_inventory[4] - 1
 								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
+								money += cur_interaction.get_parent().get_parent().getValue()
 						"PURPLE":
 							if slushy_inventory[5] > 0:
 								slushy_inventory[5] = slushy_inventory[5] - 1
 								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
+								money += cur_interaction.get_parent().get_parent().getValue()
 						"WHITE":
 							if slushy_inventory[6] > 0:
 								slushy_inventory[6] = slushy_inventory[6] - 1
 								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
-					money += cur_interaction.get_parent().get_parent().getValue()
+								money += cur_interaction.get_parent().get_parent().getValue()
 
 func execute_interaction2():
 	print("F")
@@ -270,24 +296,31 @@ func execute_interaction3():
 			"upgrade":
 				match cur_interaction.interact_value:
 					"customerupgrade": 
-						var cost = customerupgrade[customerLevel+1]
-						if money > cost[0] and customerLevel < maxcustomeupgrader:
-							customerLevel += 1
-							money -= cost[0]
-							print(str(customerLevel))
+						if customerLevel < maxcustomeupgrader:
+							var cost = customerupgrade[customerLevel+1]
+							if money >= cost[0]:
+								customerLevel += 1
+								money -= cost[0]
+								print(str(customerLevel))
+								upgradeUI.set_customer_level(customerLevel)
 					"productionupgrade":
-						var cost = productionupgrade[productionLevel+1]
-						if money > cost[0] and productionLevel < maxproductionupgrades:
-							productionLevel += 1
-							money -= cost[0]
-							print(str(productionLevel))
+						if productionLevel < maxproductionupgrades:
+							var cost = productionupgrade[productionLevel+1]
+							if money >= cost[0] :
+								productionLevel += 1
+								money -= cost[0]
+								print(str(productionLevel))
+								upgradeUI.set_machine_level(productionLevel)
 					"movementupgrade":
 						print("MovementUpgrade")
-						var cost = movementupgrade[movementLevel+1]
-						if money > cost[0] and movementLevel < maxmovementupgrade:
-							movementLevel += 1
-							money -= cost[0]
-							print(str(movementLevel))
+						if movementLevel < maxmovementupgrade:
+							var cost = movementupgrade[movementLevel+1]
+							if money >= cost[0]:
+								movementLevel += 1
+								money -= cost[0]
+								print(str(movementLevel))
+								move_speed = movementupgrade[movementLevel][1]
+								upgradeUI.set_player_level(movementLevel)
 
 func startProduction():	
 	slush_machine.isProducing = true
