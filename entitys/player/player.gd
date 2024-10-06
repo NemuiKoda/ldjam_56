@@ -139,10 +139,14 @@ func execute_interaction():
 								carrying_slime = false
 						"chest_red": 
 							if slimeColor == "red":
+								var red_slime_instance = preload("res://entitys/slime/red_slime.tscn").instantiate()
+								chest_red.add_child(red_slime_instance)
 								chest_red.red_slime_stored += 1
 								carrying_slime = false
 						"chest_green": 
 							if slimeColor == "green":
+								var green_slime_instance = preload("res://entitys/slime/green_slime.tscn").instantiate()
+								chest_green.add_child(green_slime_instance)
 								chest_green.green_slime_stored += 1
 								carrying_slime = false
 					return
