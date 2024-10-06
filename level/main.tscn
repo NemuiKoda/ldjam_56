@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://m2ww0i5h4h31"]
+[gd_scene load_steps=33 format=3 uid="uid://m2ww0i5h4h31"]
 
 [ext_resource type="Texture2D" uid="uid://bfrchcl6r67s6" path="res://assets/tilemap/TX Tileset Stone Ground.png" id="1_owgqh"]
 [ext_resource type="Texture2D" uid="uid://c71n2dtonok6m" path="res://assets/tilemap/TX Tileset Wall.png" id="2_1cpqf"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://boxhqidhsigbr" path="res://entitys/slime/red_slime.tscn" id="23_tgohe"]
 [ext_resource type="PackedScene" uid="uid://b1pfpv0o0uhdk" path="res://entitys/slime/green_slime.tscn" id="24_5rvgn"]
 [ext_resource type="PackedScene" uid="uid://iwsuk0og04iu" path="res://entitys/Spawner.tscn" id="24_cpetr"]
+[ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="25_hdght"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewmak"]
 texture = ExtResource("1_owgqh")
@@ -489,6 +490,24 @@ visible = false
 position = Vector2(98.25, 213.75)
 shape = SubResource("RectangleShape2D_4j8pi")
 debug_color = Color(0.732429, 0.440897, 0.458529, 0.42)
+
+[node name="MovementUpgrade" parent="." instance=ExtResource("25_hdght")]
+position = Vector2(-135, 154)
+interact_label = "MovementUpgrade"
+interact_type = "upgrade"
+interact_value = "movementupgrade"
+
+[node name="CustomerUpgrade" parent="." instance=ExtResource("25_hdght")]
+position = Vector2(1, 248)
+interact_label = "CustomerUpgrade"
+interact_type = "upgrade"
+interact_value = "customerupgrade"
+
+[node name="InteractArea" parent="." instance=ExtResource("25_hdght")]
+position = Vector2(226, 204)
+interact_label = "ProductionUpgrade"
+interact_type = "upgrade"
+interact_value = "productionupgrade"
 
 [connection signal="area_entered" from="Inside" to="Player" method="_on_inside_area_entered"]
 [connection signal="area_exited" from="Inside" to="Player" method="_on_inside_area_exited"]
