@@ -16,4 +16,5 @@ interact_type = "item"
 interact_value = "red_slushy"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_70by7")

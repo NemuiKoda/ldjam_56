@@ -1,14 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://m2ww0i5h4h31"]
+[gd_scene load_steps=31 format=3 uid="uid://m2ww0i5h4h31"]
 
 [ext_resource type="Texture2D" uid="uid://bfrchcl6r67s6" path="res://assets/tilemap/TX Tileset Stone Ground.png" id="1_owgqh"]
 [ext_resource type="Texture2D" uid="uid://c71n2dtonok6m" path="res://assets/tilemap/TX Tileset Wall.png" id="2_1cpqf"]
 [ext_resource type="Texture2D" uid="uid://fdwlrxnp8jg3" path="res://assets/tilemap/TX Tileset Grass.png" id="3_kytyb"]
 [ext_resource type="Texture2D" uid="uid://ce40t2k0flisn" path="res://assets/tilemap/TX Struct.png" id="4_uxjkr"]
 [ext_resource type="Texture2D" uid="uid://bntafodq0ncxe" path="res://assets/tilemap/TX Props.png" id="5_chedb"]
-[ext_resource type="Script" path="res://level/spawner.gd" id="6_i2x7v"]
 [ext_resource type="PackedScene" uid="uid://bbgekotruutm4" path="res://entitys/player/player.tscn" id="6_wsmm1"]
 [ext_resource type="PackedScene" path="res://level/customer_slots.tscn" id="8_mg0jy"]
-[ext_resource type="PackedScene" path="res://entitys/customer/customer.tscn" id="9_mk5qq"]
+[ext_resource type="PackedScene" uid="uid://h6ad4s2iv6yi" path="res://entitys/customer/customer.tscn" id="9_mk5qq"]
 [ext_resource type="PackedScene" uid="uid://ba1y2t7o3pkly" path="res://interactible/slushmachine/slush_machine.tscn" id="10_0g232"]
 [ext_resource type="PackedScene" uid="uid://c523y55hynrjh" path="res://interactible/storage/chest_blue.tscn" id="11_yfkc4"]
 [ext_resource type="PackedScene" uid="uid://b5oioe05cdvsf" path="res://interactible/storage/chest_red.tscn" id="13_5p2kt"]
@@ -20,6 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://bgm7tm0rw1tie" path="res://interactible/slushy/slushy_cyan.tscn" id="19_8w1le"]
 [ext_resource type="PackedScene" uid="uid://bxywhup3ehkp2" path="res://interactible/storage/chest_green.tscn" id="19_urd1s"]
 [ext_resource type="PackedScene" uid="uid://blkr0aky4xlkj" path="res://interactible/slushy/slushy_red.tscn" id="20_aqy4u"]
+[ext_resource type="PackedScene" uid="uid://co5ua3suroiok" path="res://entitys/AreaSpawner.tscn" id="21_xie4y"]
+[ext_resource type="PackedScene" uid="uid://d2rlnjpscqq8y" path="res://entitys/slime/blue_slime.tscn" id="22_4v36t"]
+[ext_resource type="PackedScene" uid="uid://d0p33qqp6j52v" path="res://entitys/slime/red_slime.tscn" id="23_tgohe"]
+[ext_resource type="PackedScene" uid="uid://b0qbolx3g6qjp" path="res://entitys/slime/green_slime.tscn" id="24_5rvgn"]
+[ext_resource type="PackedScene" uid="uid://iwsuk0og04iu" path="res://entitys/Spawner.tscn" id="24_cpetr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewmak"]
 texture = ExtResource("1_owgqh")
@@ -399,7 +403,6 @@ layer_2/name = "Walkthrough"
 layer_2/tile_data = PackedInt32Array(-786406, 917508, 0, -720874, 720900, 5, -720866, 458756, 3, -655352, 851972, 11, -327684, 327684, 6, -655361, 327684, 9, 131083, 327684, 9, 131084, 327684, 6, 393228, 196612, 7, 196619, 196612, 1, -655336, 589828, 5, -655332, 589828, 5, -65531, 917508, 0, -65536, 917508, 0)
 
 [node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("6_i2x7v")
 
 [node name="spawnarea" type="Polygon2D" parent="Node2D"]
 visible = false
@@ -414,32 +417,29 @@ position = Vector2(530, 141)
 [node name="CustomerSlots" parent="." instance=ExtResource("8_mg0jy")]
 position = Vector2(-183, 249)
 
-[node name="customer" parent="." instance=ExtResource("9_mk5qq")]
-position = Vector2(1, 360)
-
 [node name="slushMachine" parent="." instance=ExtResource("10_0g232")]
 position = Vector2(223, 234)
 
 [node name="Slushy_Blue" parent="." instance=ExtResource("14_ecyu6")]
-position = Vector2(123, 123)
+position = Vector2(591, 226)
 
 [node name="Slushy_Yellow" parent="." instance=ExtResource("15_ikirf")]
-position = Vector2(63, 129)
+position = Vector2(531, 232)
 
 [node name="Slushy_White" parent="." instance=ExtResource("16_xh5sn")]
-position = Vector2(92, 145)
+position = Vector2(560, 248)
 
 [node name="Slushy_Purple" parent="." instance=ExtResource("17_huuov")]
-position = Vector2(94, 112)
+position = Vector2(562, 215)
 
 [node name="Slushy_Green" parent="." instance=ExtResource("18_6l1ks")]
-position = Vector2(21, 135)
+position = Vector2(489, 238)
 
 [node name="Slushy_Cyan" parent="." instance=ExtResource("19_8w1le")]
-position = Vector2(10, 113)
+position = Vector2(478, 216)
 
 [node name="Slushy_Red" parent="." instance=ExtResource("20_aqy4u")]
-position = Vector2(47, 151)
+position = Vector2(515, 254)
 
 [node name="Slushyspawn" type="Marker2D" parent="."]
 position = Vector2(223, 134)
@@ -452,3 +452,17 @@ position = Vector2(257, 14)
 
 [node name="ChestRed" parent="." instance=ExtResource("13_5p2kt")]
 position = Vector2(99, 13)
+
+[node name="AreaSpawner" parent="." node_paths=PackedStringArray("spawn_area") instance=ExtResource("21_xie4y")]
+spawn_units = Array[PackedScene]([ExtResource("22_4v36t"), ExtResource("23_tgohe"), ExtResource("24_5rvgn")])
+spawn_units_amount = 1
+spawn_units_max_amount = 12
+spawn_time_intervall = 2.0
+spawn_area = NodePath("../Node2D/spawnarea")
+
+[node name="Spawner" parent="." instance=ExtResource("24_cpetr")]
+position = Vector2(-20, 423)
+spawn_units = Array[PackedScene]([ExtResource("9_mk5qq")])
+spawn_units_amount = 1
+spawn_units_max_amount = 4
+spawn_time_intervall = 8.0
