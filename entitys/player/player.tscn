@@ -87,6 +87,7 @@ libraries = {
 z_index = 1
 
 [node name="Interaction Area" type="Area2D" parent="Interaction components"]
+scale = Vector2(0.25, 0.5)
 collision_layer = 0
 collision_mask = 2
 monitorable = false

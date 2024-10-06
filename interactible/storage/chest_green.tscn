@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvw7xgly0uk22"]
+
+[ext_resource type="Script" path="res://interactible/storage/chest_green.gd" id="1_4dfab"]
+[ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="1_qwcb8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkbfk"]
+size = Vector2(142, 75)
+
+[node name="ChestGreen" type="CharacterBody2D"]
+script = ExtResource("1_4dfab")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xkbfk")
+
+[node name="LabelGreen" type="Label" parent="CollisionShape2D"]
+offset_left = -61.0
+offset_top = -71.0
+offset_right = 37.0
+offset_bottom = -48.0
+scale = Vector2(1.25275, 1.28571)
+text = "Green Slime:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractArea" parent="." instance=ExtResource("1_qwcb8")]
+scale = Vector2(1.39792, 1.88)
+interact_label = "chest_green"
+interact_type = "storage"
+interact_value = "chest_green"

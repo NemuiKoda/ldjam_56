@@ -5,6 +5,9 @@ extends CharacterBody2D
 @onready var all_interactions = []
 @onready var interactLabel = $"Interaction components/InteractLabel"
 @onready var slush_machine = $"../slushMachine"
+@onready var chest_blue = $"../ChestBlue"
+@onready var chest_red = $"../ChestRed"
+@onready var chest_green = $"../ChestGreen"
 
 var carrying_slime = false
 var slimeColor = ""
@@ -77,6 +80,40 @@ func execute_interaction():
 						"red" : slush_machine.red_slime += 1
 						"green" : slush_machine.green_slime +=1
 					carrying_slime = false
+			"storage" :
+				if carrying_slime == true:
+					match cur_interaction.interact_value:
+						"chest_blue": 
+							if slimeColor == "blue":
+								chest_blue.blue_slime_stored += 1
+								carrying_slime = false
+						"chest_red": 
+							if slimeColor == "red":
+								chest_red.red_slime_stored += 1
+								carrying_slime = false
+						"chest_green": 
+							if slimeColor == "green":
+								chest_green.green_slime_stored += 1
+								carrying_slime = false
+					return
+				else:
+					match cur_interaction.interact_value:
+						"chest_blue": 
+							if chest_blue.blue_slime_stored >= 1:
+								chest_blue.blue_slime_stored -= 1
+								carrying_slime = true
+								slimeColor = "blue"
+						"chest_red": 
+							if chest_red.red_slime_stored >= 1:
+								chest_red.red_slime_stored -= 1
+								carrying_slime = true
+								slimeColor = "red"
+						"chest_green":
+							if chest_green.green_slime_stored >= 1:
+									chest_green.green_slime_stored -= 1
+									carrying_slime = true
+									slimeColor = "green"
+					
 
 func execute_interaction2():
 	if all_interactions:
