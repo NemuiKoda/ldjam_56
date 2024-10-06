@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var chest_red = $"../ChestRed"
 @onready var chest_green = $"../ChestGreen"
 @onready var slushy_production_location = $"../Slushyspawn"
+@onready var inside = $"../Inside"
 
 #inventory
 var slushy_inventory = [0,0,0,0,0,0,0] #[blue,red,green,cyan,yellow,purple,white]
@@ -24,17 +25,13 @@ var catching = false
 func _ready():
 	update_interactions()
 
-func _process(_delta):	
-	if Input.is_action_pressed("catch"):
-		if catch_mode:
-			animation.play("catch")
-			catching = true
-
 func _physics_process(_delta):
 	var input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")		
 	)
+	
+		
 	
 	if Input.is_action_just_pressed("interact"):
 		execute_interaction()
@@ -97,15 +94,16 @@ func execute_interaction():
 		var cur_interaction = all_interactions[0]
 		match cur_interaction.interact_type:
 			"slime" : 
-				if carrying_slime == false:
-					animation.play("catch")
-					print("catch")
-					match cur_interaction.interact_value:
-						"blue" : slimeColor = "blue"
-						"red" : slimeColor = "red"
-						"green" : slimeColor = "green" 
-					carrying_slime = true
-					cur_interaction.get_parent().deleteSlime()
+					if carrying_slime == false and catch_mode:
+						print("catch")
+						match cur_interaction.interact_value:
+							"blue" : slimeColor = "blue"
+							"red" : slimeColor = "red"
+							"green" : slimeColor = "green" 
+						carrying_slime = true
+						cur_interaction.get_parent().deleteSlime()
+						animation.play("catch")
+						catching = true
 			"slushMachine" : 
 				if carrying_slime == true:
 					print("Add Slime to Machine")
@@ -222,9 +220,9 @@ func execute_interaction2():
 		var cur_interaction = all_interactions[0]
 		match cur_interaction.interact_type:
 			"slushMachine":
-				if carrying_slime == false and slush_machine.isProducing == false and (slush_machine.blue_slime != 0 or slush_machine.red_slime !=0 or slush_machine.green_slime != 0):
+				if slush_machine.isProducing == false and (slush_machine.blue_slime != 0 or slush_machine.red_slime !=0 or slush_machine.green_slime != 0):
 						startProduction()
-
+		
 
 func startProduction():
 	slush_machine.isProducing = true
@@ -273,3 +271,13 @@ func runningProduction(color):
 			var slushy_white_instance = preload("res://interactible/slushy/slushy_white.tscn").instantiate()
 			slushy_production_location.add_child(slushy_white_instance)
 	slush_machine.isProducing = false
+
+
+func _on_inside_area_entered(area: Area2D):
+	print("Area entered")
+	catch_mode = false
+
+
+func _on_inside_area_exited(area: Area2D):
+	print("Area left")
+	catch_mode = true
