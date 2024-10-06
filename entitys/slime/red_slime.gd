@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var player = get_node("/root/World/Player")
 @onready var animation = $AnimationPlayer
  
-var speed = 400
+var speed = 500
 
 var in_jump = false
 var rng = RandomNumberGenerator.new()
@@ -20,7 +20,7 @@ func _physics_process(_delta):
 			if rng.randf()<0.7:
 				velocity = -direction * speed
 			else:
-				velocity = direction * (speed + 150)
+				velocity = direction * (speed + 300)
 		# Idle jumping
 		else:
 			animation.play("jump")
