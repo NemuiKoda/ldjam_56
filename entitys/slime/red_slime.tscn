@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://boxhqidhsigbr"]
+[gd_scene load_steps=10 format=3 uid="uid://d0p33qqp6j52v"]
 
 [ext_resource type="Script" path="res://entitys/slime/red_slime.gd" id="1_bmm61"]
 [ext_resource type="Texture2D" uid="uid://di0mqt63vk3hx" path="res://assets/OurAssets/RedSlime.png" id="2_freod"]
-[ext_resource type="PackedScene" uid="uid://gt1ydhfqpctr" path="res://interactible/InteractArea.tscn" id="3_glb3p"]
+[ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="3_glb3p"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nhk8n"]
 
@@ -101,6 +101,6 @@ libraries = {
 
 [node name="InteractArea" parent="." instance=ExtResource("3_glb3p")]
 scale = Vector2(0.5, 0.5)
-interact_label = "BlueSlime"
-interact_type = "blue_slime"
-interact_value = "blue"
+interact_label = "RedSlime"
+interact_type = "slime"
+interact_value = "red"

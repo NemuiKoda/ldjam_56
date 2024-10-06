@@ -76,9 +76,12 @@ func execute_interaction():
 	if all_interactions:
 		var cur_interaction = all_interactions[0]
 		match cur_interaction.interact_type:
-			"blue_slime" : 
+			"slime" : 
 				if carrying_slime == false:
-					slimeColor = "blue"
+					match cur_interaction.interaction_value:
+						"blue" : slimeColor = "blue"
+						"red" : slimeColor = "red"
+						"green" : slimeColor = "green" 
 					carrying_slime = true
 					cur_interaction.get_parent().queue_free()
 			"slushMachine" : 
