@@ -33,8 +33,6 @@ func _physics_process(_delta):
 		Input.get_action_strength("down") - Input.get_action_strength("up")		
 	)
 	
-		
-	
 	if Input.is_action_just_pressed("interact"):
 		execute_interaction()
 	if Input.is_action_just_pressed("interact2"):
@@ -92,6 +90,9 @@ func update_interactions():
 		interactLabel.text = ""
 
 func execute_interaction():
+	if catch_mode && !carrying_slime:
+		animation.play("catch")
+		catching = true
 	if all_interactions:
 		var cur_interaction = all_interactions[0]
 		match cur_interaction.interact_type:
@@ -104,8 +105,6 @@ func execute_interaction():
 							"green" : slimeColor = "green" 
 						carrying_slime = true
 						cur_interaction.get_parent().deleteSlime()
-						animation.play("catch")
-						catching = true
 			"slushMachine" : 
 				if carrying_slime == true:
 					print("Add Slime to Machine")

@@ -153,6 +153,7 @@ libraries = {
 }
 
 [node name="Interaction components" type="Node2D" parent="."]
+visible = false
 z_index = 1
 
 [node name="Interaction Area" type="Area2D" parent="Interaction components"]
