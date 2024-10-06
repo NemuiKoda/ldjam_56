@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://d2rlnjpscqq8y"]
+[gd_scene load_steps=10 format=3 uid="uid://d2rlnjpscqq8y"]
 
-[ext_resource type="Script" path="res://entitys/slime/basic_slime.gd" id="1_1ew2l"]
-[ext_resource type="Texture2D" uid="uid://dp6dsigfqii7p" path="res://assets/OurAssets/BlueSlime.png" id="2_gsk58"]
-[ext_resource type="PackedScene" uid="uid://gt1ydhfqpctr" path="res://interactible/InteractArea.tscn" id="3_mx3bo"]
+[ext_resource type="Script" path="res://entitys/slime/blue_slime.gd" id="1_phech"]
+[ext_resource type="Texture2D" uid="uid://w4hlhy5ibib2" path="res://assets/OurAssets/SlimeBase.png" id="2_ln5tl"]
+[ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="3_xaofr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nhk8n"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xjmw"]
 radius = 7.28011
@@ -78,12 +80,13 @@ _data = {
 "jump": SubResource("Animation_fp808")
 }
 
-[node name="BasicSlime" type="CharacterBody2D"]
+[node name="blue_slime" type="CharacterBody2D"]
 scale = Vector2(2, 2)
-script = ExtResource("1_1ew2l")
+script = ExtResource("1_phech")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_gsk58")
+material = SubResource("CanvasItemMaterial_nhk8n")
+texture = ExtResource("2_ln5tl")
 hframes = 8
 vframes = 4
 
@@ -96,7 +99,7 @@ libraries = {
 "": SubResource("AnimationLibrary_mpytp")
 }
 
-[node name="InteractArea" parent="." instance=ExtResource("3_mx3bo")]
+[node name="InteractArea" parent="." instance=ExtResource("3_xaofr")]
 scale = Vector2(0.5, 0.5)
 interact_label = "BlueSlime"
 interact_type = "blue_slime"

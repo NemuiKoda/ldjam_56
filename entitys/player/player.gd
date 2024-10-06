@@ -12,14 +12,7 @@ extends CharacterBody2D
 
 #inventory
 var slushy_inventory = [0,0,0,0,0,0,0] #[blue,red,green,cyan,yellow,purple,white]
-#instances of Slushys
-var slushy_blue_instance = preload("res://interactible/slushy/slushy_blue.tscn").instantiate()
-var slushy_red_instance = preload("res://interactible/slushy/slushy_red.tscn").instantiate()
-var slushy_green_instance = preload("res://interactible/slushy/slushy_green.tscn").instantiate()
-var slushy_cyan_instance = preload("res://interactible/slushy/slushy_cyan.tscn").instantiate()
-var slushy_yellow_instance = preload("res://interactible/slushy/slushy_yellow.tscn").instantiate()
-var slushy_purple_instance = preload("res://interactible/slushy/slushy_purple.tscn").instantiate()
-var slushy_white_instance = preload("res://interactible/slushy/slushy_white.tscn").instantiate()
+
 
 
 var carrying_slime = false
@@ -76,9 +69,12 @@ func execute_interaction():
 	if all_interactions:
 		var cur_interaction = all_interactions[0]
 		match cur_interaction.interact_type:
-			"blue_slime" : 
+			"slime" : 
 				if carrying_slime == false:
-					slimeColor = "blue"
+					match cur_interaction.interact_value:
+						"blue" : slimeColor = "blue"
+						"red" : slimeColor = "red"
+						"green" : slimeColor = "green" 
 					carrying_slime = true
 					cur_interaction.get_parent().queue_free()
 			"slushMachine" : 
@@ -181,19 +177,27 @@ func startProduction():
 	
 func runningProduction(color):
 	print(str(color) + " slushy")
+	#instances of Slushys
 	match color:
 		"blue":
+			var slushy_blue_instance = preload("res://interactible/slushy/slushy_blue.tscn").instantiate()
 			slushy_production_location.add_child(slushy_blue_instance)
 		"red":
+			var slushy_red_instance = preload("res://interactible/slushy/slushy_red.tscn").instantiate()
 			slushy_production_location.add_child(slushy_red_instance)
 		"green":
+			var slushy_green_instance = preload("res://interactible/slushy/slushy_green.tscn").instantiate()
 			slushy_production_location.add_child(slushy_green_instance)
 		"cyan":
+			var slushy_cyan_instance = preload("res://interactible/slushy/slushy_cyan.tscn").instantiate()
 			slushy_production_location.add_child(slushy_cyan_instance)
 		"yellow":
+			var slushy_yellow_instance = preload("res://interactible/slushy/slushy_yellow.tscn").instantiate()
 			slushy_production_location.add_child(slushy_yellow_instance)
 		"purple":
+			var slushy_purple_instance = preload("res://interactible/slushy/slushy_purple.tscn").instantiate()
 			slushy_production_location.add_child(slushy_purple_instance)
 		"white":
+			var slushy_white_instance = preload("res://interactible/slushy/slushy_white.tscn").instantiate()
 			slushy_production_location.add_child(slushy_white_instance)
 	slush_machine.isProducing = false

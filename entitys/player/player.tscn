@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cggdmxnk6afsi"]
+[gd_scene load_steps=9 format=3 uid="uid://bbgekotruutm4"]
 
 [ext_resource type="Script" path="res://entitys/player/player.gd" id="1_hq055"]
 [ext_resource type="Texture2D" uid="uid://duo78yh4av8bh" path="res://assets/OurAssets/Player32x32.png" id="2_lwj5a"]
@@ -67,7 +67,6 @@ radius = 26.3354
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(3, 3)
-collision_layer = 2
 script = ExtResource("1_hq055")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
