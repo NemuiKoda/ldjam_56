@@ -14,10 +14,37 @@ extends CharacterBody2D
 @onready var slushy_production_location = $"../Slushyspawn"
 @onready var inside = $"../Inside"
 
-#inventory
+#Inventory
 var slushy_inventory = [0,0,0,0,0,0,0] #[blue,red,green,cyan,yellow,purple,white]
 var money = 0
 
+#Upgrades
+var maxmovementupgrade = 4
+var movementLevel = 0
+var movementupgrade= [
+	[0, 250],
+	[50, 350],
+	[100, 450],
+	[150, 550]
+]
+
+
+var maxcustomeupgrader = 4
+var customerLevel = 0
+var customerupgrade= [
+	[0, 1],
+	[25, 2],
+	[100, 3],
+	[150, 4]
+]
+
+var maxproductionupgrades= 3
+var productionLevel = 0
+var productionupgrade= [
+	[0, 0.33],
+	[50, 0.66],
+	[100, 1.00]
+]
 
 var carrying_slime = false
 var slimeColor = ""
@@ -26,6 +53,9 @@ var catching = false
 
 func _ready():
 	update_interactions()
+
+func _process(delta: float):
+	move_speed = movementupgrade[movementLevel][1]
 
 func _physics_process(_delta):
 	var input_direction = Vector2(
@@ -39,6 +69,8 @@ func _physics_process(_delta):
 		execute_interaction()
 	if Input.is_action_just_pressed("interact2"):
 		execute_interaction2()
+	if Input.is_action_just_pressed("interact3"):
+		execute_interaction3()
 	
 	# Animation
 	if !catching:
@@ -221,6 +253,7 @@ func execute_interaction():
 					money += cur_interaction.get_parent().get_parent().getValue()
 
 func execute_interaction2():
+	print("F")
 	if all_interactions:
 		var cur_interaction = all_interactions[0]
 		match cur_interaction.interact_type:
@@ -228,6 +261,32 @@ func execute_interaction2():
 				if slush_machine.isProducing == false and (slush_machine.blue_slime != 0 or slush_machine.red_slime !=0 or slush_machine.green_slime != 0):
 						startProduction()
 		
+func execute_interaction3():
+	print("U")
+	if all_interactions:
+		var cur_interaction = all_interactions[0]
+		match cur_interaction.interact_type:
+			"upgrade":
+				match cur_interaction.interact_value:
+					"customerupgrade": 
+						var cost = customerupgrade[customerLevel+1]
+						if money > cost[0] and customerLevel < maxcustomeupgrader:
+							customerLevel += 1
+							money -= cost[0]
+							print(str(customerLevel))
+					"productionupgrade":
+						var cost = productionupgrade[productionLevel+1]
+						if money > cost[0] and productionLevel < maxproductionupgrades:
+							productionLevel += 1
+							money -= cost[0]
+							print(str(productionLevel))
+					"movementupgrade":
+						print("MovementUpgrade")
+						var cost = movementupgrade[movementLevel+1]
+						if money > cost[0] and movementLevel < maxmovementupgrade:
+							movementLevel += 1
+							money -= cost[0]
+							print(str(movementLevel))
 
 func startProduction():
 	slush_machine.isProducing = true
