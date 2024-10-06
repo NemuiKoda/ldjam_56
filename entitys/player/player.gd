@@ -12,6 +12,7 @@ extends CharacterBody2D
 
 #inventory
 var slushy_inventory = [0,0,0,0,0,0,0] #[blue,red,green,cyan,yellow,purple,white]
+var money = 0
 
 
 
@@ -104,7 +105,7 @@ func execute_interaction():
 						"red" : slimeColor = "red"
 						"green" : slimeColor = "green" 
 					carrying_slime = true
-					cur_interaction.get_parent().queue_free()
+					cur_interaction.get_parent().deleteSlime()
 			"slushMachine" : 
 				if carrying_slime == true:
 					print("Add Slime to Machine")
@@ -160,14 +161,16 @@ func execute_interaction():
 								slimeColor = "blue"
 						"chest_red": 
 							if chest_red.red_slime_stored >= 1:
+								chest_red.get_child(chest_red.get_children().size()-1).queue_free()
 								chest_red.red_slime_stored -= 1
 								carrying_slime = true
 								slimeColor = "red"
 						"chest_green":
 							if chest_green.green_slime_stored >= 1:
-									chest_green.green_slime_stored -= 1
-									carrying_slime = true
-									slimeColor = "green"
+								chest_green.get_child(chest_green.get_children().size()-1).queue_free()
+								chest_green.green_slime_stored -= 1
+								carrying_slime = true
+								slimeColor = "green"
 			"item": 
 				match cur_interaction.interact_value:
 					#[blue,red,green,cyan,yellow,purple,white]
@@ -179,6 +182,40 @@ func execute_interaction():
 					"purple_slushy": slushy_inventory[5] = slushy_inventory[5] + 1
 					"white_slushy": slushy_inventory[6] = slushy_inventory[6] + 1
 				cur_interaction.get_parent().queue_free()
+			"customer":
+				if cur_interaction.get_parent().get_parent().getReceivedOrder() == true:
+					return
+				else:
+					match cur_interaction.get_parent().get_parent().getOrder():
+						"BLUE": 
+							if slushy_inventory[0] > 0:
+								slushy_inventory[0] = slushy_inventory[0] - 1
+								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
+						"RED":
+							if slushy_inventory[1] > 0:
+								slushy_inventory[1] = slushy_inventory[1] - 1
+								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
+						"GREEN":
+							if slushy_inventory[2] > 0:
+								slushy_inventory[2] = slushy_inventory[2] - 1
+								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
+						"CYAN": 
+							if slushy_inventory[3] > 0:
+								slushy_inventory[3] = slushy_inventory[3] - 1
+								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
+						"YELLOW":
+							if slushy_inventory[4] > 0:
+								slushy_inventory[4] = slushy_inventory[4] - 1
+								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
+						"PURPLE":
+							if slushy_inventory[5] > 0:
+								slushy_inventory[5] = slushy_inventory[5] - 1
+								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
+						"WHITE":
+							if slushy_inventory[6] > 0:
+								slushy_inventory[6] = slushy_inventory[6] - 1
+								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
+					money += cur_interaction.get_parent().get_parent().getValue()
 
 func execute_interaction2():
 	if all_interactions:

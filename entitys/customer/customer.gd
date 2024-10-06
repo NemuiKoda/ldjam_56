@@ -9,12 +9,36 @@ enum {
 	WALKING
 }
 
-var slushi_requests = ["BLUE", "RED", "GREEN", "PURPLE", "CYAN", "YELLOW", "WHITE"]
+var slushy_requests = [
+	["BLUE", 10],
+	["RED", 11],
+	["GREEN", 12],
+	["PURPLE", 20],
+	["CYAN", 21],
+	["YELLOW", 22],
+	["WHITE", 30]
+]
 
 var is_in_slot = false
-var received_order = false
+@export var received_order = false
+@export var order = ""
+@export var value = 0
+
+func getReceivedOrder():
+	return received_order
+
+func setReceivedOrder(boolean):
+	received_order = boolean
+
+func getOrder():
+	return order[0]
+	
+func getValue():
+	return value
 
 var slot
+
+var leaving = false
 
 var customer_slots
 
@@ -24,7 +48,9 @@ func _ready():
 	randomize()
 	customer_slots = get_tree().get_root().get_node("World/CustomerSlots")
 	slot = get_slot()
-	$InteractionComponents/InteractArea.interact_label = choose(slushi_requests)
+	order = choose(slushy_requests)
+	$InteractionComponents/InteractArea.interact_label = order[0]
+	value = order[1]
 
 func _process(delta: float):
 	#if current_state == 0:
@@ -66,9 +92,11 @@ func receive_order():
 	received_order = true;
 
 func leave():
-	position += Vector2(0,100) * speed * 0.00003
-	emit_signal("unit_removed")
-	if global_position > Vector2(0,400):
+	position += Vector2(0,100) * speed * 0.00006
+	if !leaving:
+		emit_signal("unit_removed")
+		leaving = true
+	if global_position.y > 500:
 		("I'M LEAVING")
 		self.queue_free()
 
