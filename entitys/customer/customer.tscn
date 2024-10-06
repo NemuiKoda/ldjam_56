@@ -34,6 +34,8 @@ autostart = true
 [node name="InteractionComponents" type="Node2D" parent="."]
 
 [node name="InteractArea" parent="InteractionComponents" instance=ExtResource("3_42t7o")]
+position = Vector2(0, -60)
+scale = Vector2(0.18, 1)
 interact_type = "print_text"
 interact_value = "10"
 
