@@ -5,6 +5,9 @@ extends CharacterBody2D
 @onready var all_interactions = []
 @onready var interactLabel = $"Interaction components/InteractLabel"
 @onready var slush_machine = $"../slushMachine"
+@onready var container_left = $"../slushMachine/container_left/AnimationPlayer"
+@onready var container_middle = $"../slushMachine/container_middle/AnimationPlayer"
+@onready var container_right = $"../slushMachine/container_right/AnimationPlayer"
 @onready var chest_blue = $"../ChestBlue"
 @onready var chest_red = $"../ChestRed"
 @onready var chest_green = $"../ChestGreen"
@@ -114,18 +117,21 @@ func execute_interaction():
 								return
 							else:
 								slush_machine.blue_slime +=1
+								container_left.play("blue_full")
 						"red" : 
 							if(slush_machine.red_slime > 0):
 								print("Machine allready full with red slime")
 								return
 							else:
 								slush_machine.red_slime += 1
+								container_middle.play("red_full")
 						"green" : 
 							if(slush_machine.green_slime > 0):
 								print("Machine allready full with green slime")
 								return
 							else:
 								slush_machine.green_slime +=1
+								container_right.play("green_full")
 					carrying_slime = false
 			"storage" :
 				if carrying_slime == true:
@@ -228,18 +234,30 @@ func startProduction():
 	slush_machine.isProducing = true
 	if slush_machine.blue_slime == 0 and slush_machine.red_slime == 0 and slush_machine.green_slime == 1:
 		runningProduction("green")
+		container_right.play("green")
 	if slush_machine.blue_slime == 0 and slush_machine.red_slime == 1 and slush_machine.green_slime == 0:
 		runningProduction("red")
+		container_middle.play("red")
 	if slush_machine.blue_slime == 0 and slush_machine.red_slime == 1 and slush_machine.green_slime == 1:
 		runningProduction("yellow")
+		container_right.play("green")
+		container_middle.play("red")
 	if slush_machine.blue_slime == 1 and slush_machine.red_slime == 0 and slush_machine.green_slime == 0:
 		runningProduction("blue") 
+		container_left.play("blue")
 	if slush_machine.blue_slime == 1 and slush_machine.red_slime == 0 and slush_machine.green_slime == 1:
 		runningProduction("cyan")
+		container_right.play("green")
+		container_left.play("blue")
 	if slush_machine.blue_slime == 1 and slush_machine.red_slime == 1 and slush_machine.green_slime == 0:
 		runningProduction("purple")
+		container_left.play("blue")
+		container_middle.play("red")
 	if slush_machine.blue_slime == 1 and slush_machine.red_slime == 1 and slush_machine.green_slime == 1:
 		runningProduction("white")  
+		container_right.play("green")
+		container_middle.play("red")
+		container_left.play("blue")
 	slush_machine.blue_slime = 0
 	slush_machine.red_slime = 0
 	slush_machine.green_slime = 0

@@ -6,7 +6,7 @@ extends Node2D
 @export var isProducing = false
 @export var finishedProduct = false
 
-@onready var slushLabel = $ColorRect/slushColors
+@onready var slushLabel = $slushColors
 
 func _ready():
 	slushLabel.text = ("Blue: "+str(blue_slime)+" Red: "+str(red_slime)+" Green: "+str(green_slime)+" isProducing: "+str(isProducing)+" finishedProduct: "+str(finishedProduct))

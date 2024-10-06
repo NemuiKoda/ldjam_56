@@ -1,7 +1,11 @@
 extends CharacterBody2D
 
+@onready var animation = $AnimationPlayer
+
 const speed = 100
 var dir = Vector2.RIGHT
+var rng = RandomNumberGenerator.new()
+var skin_number = rng.randi_range(1,5)
 
 var current_state = WALKING
 enum {
@@ -51,8 +55,17 @@ func _ready():
 	order = choose(slushy_requests)
 	$InteractionComponents/InteractArea.interact_label = order[0]
 	value = order[1]
+	if rng.randi_range(0,1)==1:
+		$Sprite2D.flip_h = true
+	else:
+		$Sprite2D.flip_h = false
 
 func _process(delta: float):
+	if is_in_slot && !received_order:
+		animation.play("customer"+ str(skin_number) +"_idle")
+	else:
+		animation.play("customer"+ str(skin_number) +"_walking")
+	
 	#if current_state == 0:
 		#$AnimatedSprite2D.play("idle")
 	#elif current_state == 1:
@@ -67,6 +80,7 @@ func _process(delta: float):
 	
 	if received_order:
 		leave()
+		animation.speed_scale = 0.5
 		
 	if !is_in_slot:
 		if slot and !is_in_slot:

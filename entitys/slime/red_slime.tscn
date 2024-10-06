@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://entitys/slime/red_slime.gd" id="1_bmm61"]
 [ext_resource type="Texture2D" uid="uid://di0mqt63vk3hx" path="res://assets/OurAssets/RedSlime.png" id="2_freod"]
-[ext_resource type="PackedScene" uid="uid://gt1ydhfqpctr" path="res://interactible/InteractArea.tscn" id="3_glb3p"]
+[ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="3_glb3p"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nhk8n"]
 

@@ -1,7 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://ba1y2t7o3pkly"]
+[gd_scene load_steps=8 format=3 uid="uid://ba1y2t7o3pkly"]
 
 [ext_resource type="Script" path="res://interactible/slushmachine/slush_machine.gd" id="1_aspqt"]
 [ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="1_jpdo6"]
+[ext_resource type="Texture2D" uid="uid://dm8yjr3cgveim" path="res://assets/OurAssets/SlushMachine.png" id="3_8g74f"]
+[ext_resource type="PackedScene" uid="uid://cbgg807fur6ml" path="res://interactible/slushmachine/container_middle.tscn" id="4_2pvec"]
+[ext_resource type="PackedScene" uid="uid://cboi7457yyidr" path="res://interactible/slushmachine/container_left.tscn" id="4_5bxxo"]
+[ext_resource type="PackedScene" uid="uid://4xeqf5s317nq" path="res://interactible/slushmachine/container_right.tscn" id="5_cys36"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17pe4"]
 size = Vector2(122, 98)
@@ -15,28 +19,23 @@ interact_label = "slushMachine"
 interact_type = "slushMachine"
 interact_value = "array"
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -60.0
-offset_top = -50.0
-offset_right = 62.0
-offset_bottom = 47.0
-color = Color(0.470076, 0.470076, 0.470076, 1)
-
-[node name="slushColors" type="Label" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.492
-anchor_top = 0.5
-anchor_right = 0.492
-anchor_bottom = 0.5
-offset_left = -43.024
-offset_top = -10.5
-offset_right = 44.976
-offset_bottom = 47.5
-text = "test"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -1)
+position = Vector2(-1, -1)
 shape = SubResource("RectangleShape2D_17pe4")
+
+[node name="SlushyMachine" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("3_8g74f")
+
+[node name="slushColors" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="container_left" parent="." instance=ExtResource("4_5bxxo")]
+position = Vector2(-36, -27)
+
+[node name="container_middle" parent="." instance=ExtResource("4_2pvec")]
+position = Vector2(0, -24)
+
+[node name="container_right" parent="." instance=ExtResource("5_cys36")]
+position = Vector2(36, -24)
