@@ -152,7 +152,12 @@ libraries = {
 "": SubResource("AnimationLibrary_ys07t")
 }
 
+[node name="slushy_machine_timer" type="Timer" parent="."]
+wait_time = 18.0
+one_shot = true
+
 [node name="Interaction components" type="Node2D" parent="."]
+visible = false
 z_index = 1
 
 [node name="Interaction Area" type="Area2D" parent="Interaction components"]
@@ -172,5 +177,6 @@ text = "test"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="timeout" from="slushy_machine_timer" to="." method="_on_slushy_machine_timer_timeout"]
 [connection signal="area_entered" from="Interaction components/Interaction Area" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="Interaction components/Interaction Area" to="." method="_on_interaction_area_area_exited"]
