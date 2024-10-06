@@ -41,7 +41,7 @@ func _on_spawn_timer_timeout() -> void:
 		print("Max Amount of Units reached")
 		
 func _on_unit_removed():
-	print("Unit removed")
+	print("Unit removed: Area Spawner")
 	active_units_count -= 1
 
 func choose(array):

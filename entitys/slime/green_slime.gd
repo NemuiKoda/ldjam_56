@@ -3,7 +3,8 @@ extends CharacterBody2D
 @onready var player = get_node("/root/World/Player")
 @onready var animation = $AnimationPlayer
  
-var speed = 400
+var speed = 300
+signal unit_removed
 
 var in_jump = false
 var rng = RandomNumberGenerator.new()
@@ -27,3 +28,7 @@ func _physics_process(_delta):
 
 func jump():
 	in_jump = !in_jump
+	
+func deleteSlime():
+	emit_signal("unit_removed")
+	self.queue_free()

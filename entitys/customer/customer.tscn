@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd6p1h607yyh7"]
+[gd_scene load_steps=6 format=3 uid="uid://h6ad4s2iv6yi"]
 
 [ext_resource type="Script" path="res://entitys/customer/customer.gd" id="1_r3ef4"]
 [ext_resource type="Texture2D" uid="uid://btd6e27r4x8pu" path="res://icon.svg" id="2_l5h2p"]
-[ext_resource type="PackedScene" uid="uid://gt1ydhfqpctr" path="res://interactible/InteractArea.tscn" id="3_42t7o"]
+[ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="3_42t7o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6whk7"]
 animations = [{
@@ -36,7 +36,7 @@ autostart = true
 [node name="InteractArea" parent="InteractionComponents" instance=ExtResource("3_42t7o")]
 position = Vector2(0, -60)
 scale = Vector2(0.18, 1)
-interact_type = "print_text"
+interact_type = "customer"
 interact_value = "10"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
