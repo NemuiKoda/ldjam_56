@@ -102,5 +102,5 @@ libraries = {
 [node name="InteractArea" parent="." instance=ExtResource("3_xaofr")]
 scale = Vector2(0.5, 0.5)
 interact_label = "BlueSlime"
-interact_type = "blue_slime"
+interact_type = "slime"
 interact_value = "blue"
