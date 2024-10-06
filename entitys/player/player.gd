@@ -19,7 +19,6 @@ var slushy_inventory = [0,0,0,0,0,0,0] #[blue,red,green,cyan,yellow,purple,white
 var money = 0
 
 
-
 var carrying_slime = false
 var slimeColor = ""
 var catch_mode = false
@@ -232,6 +231,7 @@ func execute_interaction2():
 
 func startProduction():
 	slush_machine.isProducing = true
+	
 	if slush_machine.blue_slime == 0 and slush_machine.red_slime == 0 and slush_machine.green_slime == 1:
 		runningProduction("green")
 		container_right.play("green")
