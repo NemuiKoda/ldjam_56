@@ -105,6 +105,8 @@ func execute_interaction():
 					match cur_interaction.interact_value:
 						"chest_blue": 
 							if slimeColor == "blue":
+								var blue_slime_instance = preload("res://entitys/slime/blue_slime.tscn").instantiate()
+								chest_blue.add_child(blue_slime_instance)
 								chest_blue.blue_slime_stored += 1
 								carrying_slime = false
 						"chest_red": 
@@ -120,6 +122,7 @@ func execute_interaction():
 					match cur_interaction.interact_value:
 						"chest_blue": 
 							if chest_blue.blue_slime_stored >= 1:
+								chest_blue.get_child(chest_blue.get_children().size()-1).queue_free()
 								chest_blue.blue_slime_stored -= 1
 								carrying_slime = true
 								slimeColor = "blue"
