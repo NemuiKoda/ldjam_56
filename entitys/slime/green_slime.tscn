@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0qbolx3g6qjp"]
+[gd_scene load_steps=10 format=3 uid="uid://b1pfpv0o0uhdk"]
 
 [ext_resource type="Script" path="res://entitys/slime/green_slime.gd" id="1_d3yex"]
 [ext_resource type="Texture2D" uid="uid://dymikrsegawta" path="res://assets/OurAssets/GreenSlime.png" id="2_ahwt0"]
-[ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="3_w2515"]
+[ext_resource type="PackedScene" uid="uid://gt1ydhfqpctr" path="res://interactible/InteractArea.tscn" id="3_w2515"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nhk8n"]
 

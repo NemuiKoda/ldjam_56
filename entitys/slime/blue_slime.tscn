@@ -1,8 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2rlnjpscqq8y"]
+[gd_scene load_steps=10 format=3 uid="uid://n3y8du6nsax7"]
 
 [ext_resource type="Script" path="res://entitys/slime/blue_slime.gd" id="1_phech"]
-[ext_resource type="Texture2D" uid="uid://w4hlhy5ibib2" path="res://assets/OurAssets/SlimeBase.png" id="2_ln5tl"]
-[ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="3_xaofr"]
+[ext_resource type="Texture2D" uid="uid://b8qaifn5gv1fn" path="res://assets/OurAssets/BlueSlime.png" id="2_3nygh"]
+[ext_resource type="PackedScene" uid="uid://gt1ydhfqpctr" path="res://interactible/InteractArea.tscn" id="3_xaofr"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nhk8n"]
 
@@ -86,7 +86,7 @@ script = ExtResource("1_phech")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_nhk8n")
-texture = ExtResource("2_ln5tl")
+texture = ExtResource("2_3nygh")
 hframes = 8
 vframes = 4
 

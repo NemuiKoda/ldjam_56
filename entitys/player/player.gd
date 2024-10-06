@@ -18,11 +18,19 @@ var money = 0
 
 var carrying_slime = false
 var slimeColor = ""
+var catch_mode = false
+var catching = false
 
 func _ready():
 	update_interactions()
 
-func _physics_process(delta):
+func _process(_delta):	
+	if Input.is_action_pressed("catch"):
+		if catch_mode:
+			animation.play("catch")
+			catching = true
+
+func _physics_process(_delta):
 	var input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")		
@@ -33,20 +41,38 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("interact2"):
 		execute_interaction2()
 	
-	if input_direction.x == 1:
-		$Sprite2D.flip_h = false
-		animation.play("walking")
-	elif input_direction.x == -1:
-		$Sprite2D.flip_h = true
-		animation.play("walking")
-	elif input_direction.y == 1 || input_direction.y == -1:
-		animation.play("walking")
-	else:
-		animation.play("idle")
+	# Animation
+	if !catching:
+		if input_direction.x == 1:
+			$Sprite2D.flip_h = false
+			if catch_mode:
+				animation.play("walking_net")
+			else:
+				animation.play("walking")
+				
+		elif input_direction.x == -1:
+			$Sprite2D.flip_h = true
+			if catch_mode:
+				animation.play("walking_net")
+			else:
+				animation.play("walking")
+		elif input_direction.y == 1 || input_direction.y == -1:
+			if catch_mode:
+				animation.play("walking_net")
+			else:
+				animation.play("walking")
+		else:
+			if catch_mode:
+				animation.play("idle_net")
+			else:
+				animation.play("idle")
 	
 	velocity = input_direction * move_speed
 	
 	move_and_slide()
+
+func catching_end():
+	catching = false
 
 #Interactionmethods
 ######################################################################
@@ -72,6 +98,8 @@ func execute_interaction():
 		match cur_interaction.interact_type:
 			"slime" : 
 				if carrying_slime == false:
+					animation.play("catch")
+					print("catch")
 					match cur_interaction.interact_value:
 						"blue" : slimeColor = "blue"
 						"red" : slimeColor = "red"
