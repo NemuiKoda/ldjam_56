@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://cncwyej7xclig"]
+
+[ext_resource type="Texture2D" uid="uid://dg32q6d1bt4sn" path="res://assets/OurAssets/Props.png" id="1_h5ym1"]
+[ext_resource type="Script" path="res://ui/money.gd" id="1_leu3u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfh1u"]
+atlas = ExtResource("1_h5ym1")
+region = Rect2(16, 84, 16, 16)
+
+[node name="Money" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_leu3u")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="MoneyIcon" type="TextureRect" parent="PanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_yfh1u")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="MoneyLabel" type="Label" parent="PanelContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
