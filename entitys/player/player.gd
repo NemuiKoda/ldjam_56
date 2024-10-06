@@ -28,6 +28,7 @@ var movementupgrade= [
 	[150, 550]
 ]
 
+
 var maxcustomeupgrader = 4
 var customerLevel = 0
 var customerupgrade= [
@@ -289,6 +290,7 @@ func execute_interaction3():
 
 func startProduction():
 	slush_machine.isProducing = true
+	
 	if slush_machine.blue_slime == 0 and slush_machine.red_slime == 0 and slush_machine.green_slime == 1:
 		runningProduction("green")
 		container_right.play("green")
