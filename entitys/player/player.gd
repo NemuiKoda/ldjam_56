@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var move_speed : float = 250
 @onready var animation = $AnimationPlayer
+@onready var slushy_machine_timer = $slushy_machine_timer
 @onready var all_interactions = []
 @onready var interactLabel = $"Interaction components/InteractLabel"
 @onready var slush_machine = $"../slushMachine"
@@ -23,9 +24,11 @@ var carrying_slime = false
 var slimeColor = ""
 var catch_mode = false
 var catching = false
+var color_to_produce = "blue"
 
 func _ready():
 	update_interactions()
+
 
 func _physics_process(_delta):
 	var input_direction = Vector2(
@@ -106,7 +109,7 @@ func execute_interaction():
 						carrying_slime = true
 						cur_interaction.get_parent().deleteSlime()
 			"slushMachine" : 
-				if carrying_slime == true:
+				if carrying_slime == true && !slush_machine.isProducing:
 					print("Add Slime to Machine")
 					match slimeColor:
 						"blue" : 
@@ -228,40 +231,41 @@ func execute_interaction2():
 						startProduction()
 		
 
-func startProduction():
+func startProduction():	
 	slush_machine.isProducing = true
+	slushy_machine_timer.start()
+	print("TIMER STARTED")
 	
 	if slush_machine.blue_slime == 0 and slush_machine.red_slime == 0 and slush_machine.green_slime == 1:
-		runningProduction("green")
+		color_to_produce = "green"
 		container_right.play("green")
 	if slush_machine.blue_slime == 0 and slush_machine.red_slime == 1 and slush_machine.green_slime == 0:
-		runningProduction("red")
+		color_to_produce = "red"
 		container_middle.play("red")
 	if slush_machine.blue_slime == 0 and slush_machine.red_slime == 1 and slush_machine.green_slime == 1:
-		runningProduction("yellow")
+		color_to_produce = "yellow"
 		container_right.play("green")
 		container_middle.play("red")
 	if slush_machine.blue_slime == 1 and slush_machine.red_slime == 0 and slush_machine.green_slime == 0:
-		runningProduction("blue") 
+		color_to_produce = "blue"
 		container_left.play("blue")
 	if slush_machine.blue_slime == 1 and slush_machine.red_slime == 0 and slush_machine.green_slime == 1:
-		runningProduction("cyan")
+		color_to_produce = "cyan"
 		container_right.play("green")
 		container_left.play("blue")
 	if slush_machine.blue_slime == 1 and slush_machine.red_slime == 1 and slush_machine.green_slime == 0:
-		runningProduction("purple")
+		color_to_produce = "purple"
 		container_left.play("blue")
 		container_middle.play("red")
 	if slush_machine.blue_slime == 1 and slush_machine.red_slime == 1 and slush_machine.green_slime == 1:
-		runningProduction("white")  
+		color_to_produce = "white"
 		container_right.play("green")
 		container_middle.play("red")
 		container_left.play("blue")
 	slush_machine.blue_slime = 0
 	slush_machine.red_slime = 0
 	slush_machine.green_slime = 0
-	
-	
+
 func runningProduction(color):
 	print(str(color) + " slushy")
 	#instances of Slushys
@@ -298,3 +302,7 @@ func _on_inside_area_entered(area: Area2D):
 func _on_inside_area_exited(area: Area2D):
 	print("Area left")
 	catch_mode = true
+
+
+func _on_slushy_machine_timer_timeout():	
+	runningProduction(color_to_produce)
