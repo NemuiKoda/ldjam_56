@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d02s1w7xl3xen"]
+[gd_scene load_steps=11 format=3 uid="uid://d02s1w7xl3xen"]
 
 [ext_resource type="Theme" uid="uid://f6j43443fvfv" path="res://assets/our_themes/ui.tres" id="1_0tlif"]
-[ext_resource type="Texture2D" uid="uid://b0cmq5t0b3qb2" path="res://assets/OurAssets/Props.png" id="1_uk5io"]
+[ext_resource type="Script" path="res://ui/slushies.gd" id="1_jsebp"]
+[ext_resource type="Texture2D" uid="uid://dg32q6d1bt4sn" path="res://assets/OurAssets/Props.png" id="1_uk5io"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1umlj"]
 atlas = ExtResource("1_uk5io")
@@ -34,6 +35,7 @@ region = Rect2(0, 82, 16, 16)
 [node name="Slushies" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_jsebp")
 
 [node name="MenuBacksplash" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -59,9 +61,10 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="BlueLabel" type="Label" parent="MenuBacksplash/MarginContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "100"
+text = "0"
 
 [node name="Red" type="TextureRect" parent="MenuBacksplash/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -70,9 +73,10 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="RedLabel" type="Label" parent="MenuBacksplash/MarginContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "100"
+text = "0"
 
 [node name="Green" type="TextureRect" parent="MenuBacksplash/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -81,9 +85,10 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="GreenLabel" type="Label" parent="MenuBacksplash/MarginContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "100"
+text = "0"
 
 [node name="Cyan" type="TextureRect" parent="MenuBacksplash/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -92,9 +97,10 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="CyanLabel" type="Label" parent="MenuBacksplash/MarginContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "100"
+text = "0"
 
 [node name="Purple" type="TextureRect" parent="MenuBacksplash/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -103,9 +109,10 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="PurpleLabel" type="Label" parent="MenuBacksplash/MarginContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "100"
+text = "0"
 
 [node name="Yellow" type="TextureRect" parent="MenuBacksplash/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -114,9 +121,10 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="YellowLabel" type="Label" parent="MenuBacksplash/MarginContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "100"
+text = "0"
 
 [node name="White" type="TextureRect" parent="MenuBacksplash/MarginContainer/GridContainer"]
 layout_mode = 2
@@ -125,6 +133,7 @@ expand_mode = 2
 stretch_mode = 5
 
 [node name="WhiteLabel" type="Label" parent="MenuBacksplash/MarginContainer/GridContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "100"
+text = "0"
