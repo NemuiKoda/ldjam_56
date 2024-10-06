@@ -1,29 +1,42 @@
-[gd_scene load_steps=4 format=3 uid="uid://bvw7xgly0uk22"]
+[gd_scene load_steps=6 format=3 uid="uid://bxywhup3ehkp2"]
 
-[ext_resource type="Script" path="res://interactible/storage/chest_green.gd" id="1_4dfab"]
-[ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="1_qwcb8"]
+[ext_resource type="Script" path="res://interactible/storage/chest_green.gd" id="1_46mgq"]
+[ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="1_rhslf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xkbfk"]
-size = Vector2(142, 75)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_knv2u"]
+size = Vector2(142, 7)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_0qqym"]
+a = Vector2(0, -4)
+b = Vector2(0, 128)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_n4f5r"]
+a = Vector2(-69, -3)
+b = Vector2(73, -4)
 
 [node name="ChestGreen" type="CharacterBody2D"]
-script = ExtResource("1_4dfab")
+scale = Vector2(0.476, 0.476)
+script = ExtResource("1_46mgq")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_xkbfk")
-
-[node name="LabelGreen" type="Label" parent="CollisionShape2D"]
-offset_left = -61.0
-offset_top = -71.0
-offset_right = 37.0
-offset_bottom = -48.0
-scale = Vector2(1.25275, 1.28571)
-text = "Green Slime:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="InteractArea" parent="." instance=ExtResource("1_qwcb8")]
+[node name="InteractArea" parent="." instance=ExtResource("1_rhslf")]
+position = Vector2(0, 86)
 scale = Vector2(1.39792, 1.88)
 interact_label = "chest_green"
 interact_type = "storage"
 interact_value = "chest_green"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -45.5)
+shape = SubResource("RectangleShape2D_knv2u")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(71, -40)
+shape = SubResource("SegmentShape2D_0qqym")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(-69, -40)
+shape = SubResource("SegmentShape2D_0qqym")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 90)
+shape = SubResource("SegmentShape2D_n4f5r")
