@@ -8,6 +8,19 @@ extends CharacterBody2D
 @onready var chest_blue = $"../ChestBlue"
 @onready var chest_red = $"../ChestRed"
 @onready var chest_green = $"../ChestGreen"
+@onready var slushy_production_location = $"../Slushyspawn"
+
+#inventory
+var slushy_inventory = [0,0,0,0,0,0,0] #[blue,red,green,cyan,yellow,purple,white]
+#instances of Slushys
+var slushy_blue_instance = preload("res://interactible/slushy/slushy_blue.tscn").instantiate()
+var slushy_red_instance = preload("res://interactible/slushy/slushy_red.tscn").instantiate()
+var slushy_green_instance = preload("res://interactible/slushy/slushy_green.tscn").instantiate()
+var slushy_cyan_instance = preload("res://interactible/slushy/slushy_cyan.tscn").instantiate()
+var slushy_yellow_instance = preload("res://interactible/slushy/slushy_yellow.tscn").instantiate()
+var slushy_purple_instance = preload("res://interactible/slushy/slushy_purple.tscn").instantiate()
+var slushy_white_instance = preload("res://interactible/slushy/slushy_white.tscn").instantiate()
+
 
 var carrying_slime = false
 var slimeColor = ""
@@ -63,22 +76,33 @@ func execute_interaction():
 	if all_interactions:
 		var cur_interaction = all_interactions[0]
 		match cur_interaction.interact_type:
-			"print_text" : print(cur_interaction.interact_value)
 			"blue_slime" : 
-				print(str(carrying_slime) + " " + str(slimeColor))
 				if carrying_slime == false:
-					print(cur_interaction.interact_value)
 					slimeColor = "blue"
 					carrying_slime = true
 					cur_interaction.get_parent().queue_free()
-					print(str(carrying_slime) + " " + str(slimeColor))
 			"slushMachine" : 
 				if carrying_slime == true:
 					print("Add Slime to Machine")
 					match slimeColor:
-						"blue" : slush_machine.blue_slime +=1
-						"red" : slush_machine.red_slime += 1
-						"green" : slush_machine.green_slime +=1
+						"blue" : 
+							if (slush_machine.blue_slime > 0):
+								print("Machine allready full with blue slime")
+								return
+							else:
+								slush_machine.blue_slime +=1
+						"red" : 
+							if(slush_machine.red_slime > 0):
+								print("Machine allready full with red slime")
+								return
+							else:
+								slush_machine.red_slime += 1
+						"green" : 
+							if(slush_machine.green_slime > 0):
+								print("Machine allready full with green slime")
+								return
+							else:
+								slush_machine.green_slime +=1
 					carrying_slime = false
 			"storage" :
 				if carrying_slime == true:
@@ -113,7 +137,17 @@ func execute_interaction():
 									chest_green.green_slime_stored -= 1
 									carrying_slime = true
 									slimeColor = "green"
-					
+			"item": 
+				match cur_interaction.interact_value:
+					#[blue,red,green,cyan,yellow,purple,white]
+					"blue_slushy": slushy_inventory[0] = slushy_inventory[0] + 1
+					"red_slushy": slushy_inventory[1] = slushy_inventory[1] + 1
+					"green_slushy": slushy_inventory[2] = slushy_inventory[2] + 1
+					"cyan_slushy": slushy_inventory[3] = slushy_inventory[3] + 1
+					"yellow_slushy": slushy_inventory[4] = slushy_inventory[4] + 1
+					"purple_slushy": slushy_inventory[5] = slushy_inventory[5] + 1
+					"white_slushy": slushy_inventory[6] = slushy_inventory[6] + 1
+				cur_interaction.get_parent().queue_free()
 
 func execute_interaction2():
 	if all_interactions:
@@ -146,8 +180,20 @@ func startProduction():
 	
 	
 func runningProduction(color):
-	print(str(color)+"slushy")
-	#timer
-	#color
-	#finished true
-	#isproducing false
+	print(str(color) + " slushy")
+	match color:
+		"blue":
+			slushy_production_location.add_child(slushy_blue_instance)
+		"red":
+			slushy_production_location.add_child(slushy_red_instance)
+		"green":
+			slushy_production_location.add_child(slushy_green_instance)
+		"cyan":
+			slushy_production_location.add_child(slushy_cyan_instance)
+		"yellow":
+			slushy_production_location.add_child(slushy_yellow_instance)
+		"purple":
+			slushy_production_location.add_child(slushy_purple_instance)
+		"white":
+			slushy_production_location.add_child(slushy_white_instance)
+	slush_machine.isProducing = false
