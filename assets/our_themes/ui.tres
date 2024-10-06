@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://f6j43443fvfv"]
+
+[ext_resource type="FontFile" uid="uid://cabhkhwcpan8" path="res://assets/our_themes/RobotoMono-Bold.ttf" id="1_nibgp"]
+
+[resource]
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_nibgp")
