@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://entitys/customer/customer.gd" id="1_r3ef4"]
 [ext_resource type="Texture2D" uid="uid://btd6e27r4x8pu" path="res://icon.svg" id="2_l5h2p"]
+[ext_resource type="PackedScene" uid="uid://gt1ydhfqpctr" path="res://interactible/InteractArea.tscn" id="3_42t7o"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6whk7"]
 animations = [{
@@ -16,8 +17,6 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m00pt"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nji4o"]
-
 [node name="customer" type="CharacterBody2D"]
 script = ExtResource("1_r3ef4")
 
@@ -28,16 +27,14 @@ sprite_frames = SubResource("SpriteFrames_6whk7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_m00pt")
 
-[node name="chat_detection_area" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="chat_detection_area"]
-light_mask = 2
-visibility_layer = 2
-scale = Vector2(3, 3)
-shape = SubResource("CircleShape2D_nji4o")
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
+
+[node name="InteractionComponents" type="Node2D" parent="."]
+
+[node name="InteractArea" parent="InteractionComponents" instance=ExtResource("3_42t7o")]
+interact_type = "print_text"
+interact_value = "10"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
