@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://c523y55hynrjh"]
+[gd_scene load_steps=12 format=3 uid="uid://c523y55hynrjh"]
 
 [ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="1_lqroj"]
 [ext_resource type="Script" path="res://interactible/storage/chest_blue.gd" id="1_yxutk"]
+[ext_resource type="PackedScene" uid="uid://dc8o6j1jtli2a" path="res://interactible/interaction/interaction_area.tscn" id="3_gkjka"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xkbfk"]
 size = Vector2(142, 7)
@@ -25,6 +26,8 @@ a = Vector2(52.5222, 8.40355)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_bx8i3"]
 a = Vector2(-54.6231, 8.40356)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3kubf"]
 
 [node name="ChestBlue" type="CharacterBody2D"]
 scale = Vector2(0.475989, 0.475989)
@@ -71,3 +74,12 @@ shape = SubResource("SegmentShape2D_nudxy")
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="."]
 position = Vector2(-69.3293, -29.4124)
 shape = SubResource("SegmentShape2D_bx8i3")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_gkjka")]
+position = Vector2(2.10089, 90.3382)
+scale = Vector2(1.42017, 1.42017)
+action_name = "storage"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+scale = Vector2(5.77679, 5.77679)
+shape = SubResource("CircleShape2D_3kubf")
