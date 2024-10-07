@@ -1,12 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://bd6p1h607yyh7"]
+[gd_scene load_steps=19 format=3 uid="uid://bd6p1h607yyh7"]
 
 
 [ext_resource type="Script" path="res://entitys/customer/customer.gd" id="1_r3ef4"]
 [ext_resource type="Texture2D" uid="uid://d4er8olhpflu8" path="res://assets/OurAssets/Chars.png" id="2_pyytr"]
 [ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="3_42t7o"]
+[ext_resource type="PackedScene" uid="uid://dc8o6j1jtli2a" path="res://interactible/interaction/interaction_area.tscn" id="4_ma56w"]
 [ext_resource type="AudioStream" uid="uid://cmuyr26c67ld2" path="res://assets/sounds/yeah.wav" id="4_mcggj"]
 [ext_resource type="AudioStream" uid="uid://dt86x8c4ayebm" path="res://assets/sounds/yippi.wav" id="5_gbu6b"]
 [ext_resource type="AudioStream" uid="uid://dxvkfp5d0pxl5" path="res://assets/sounds/store-entrance.mp3" id="6_y3tiy"]
+
 
 [sub_resource type="Animation" id="Animation_80mr7"]
 length = 0.001
@@ -210,6 +212,8 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m00pt"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ywfc2"]
+
 [node name="customer" type="CharacterBody2D"]
 script = ExtResource("1_r3ef4")
 
@@ -243,6 +247,15 @@ monitoring = true
 interact_type = "customer"
 interact_value = "10"
 
+
+[node name="InteractionArea" parent="." instance=ExtResource("4_ma56w")]
+position = Vector2(0, -60)
+scale = Vector2(1, 6)
+action_name = "sell"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_ywfc2")
+
 [node name="yeah" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_mcggj")
 pitch_scale = 1.6
@@ -257,6 +270,7 @@ bus = &"SFX"
 stream = ExtResource("6_y3tiy")
 pitch_scale = 0.9
 bus = &"SFX"
+
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="InteractionComponents/InteractArea" to="." method="_on_interact_area_body_entered"]

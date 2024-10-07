@@ -4,7 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://b8qaifn5gv1fn" path="res://assets/OurAssets/BlueSlime.png" id="2_3nygh"]
 [ext_resource type="AudioStream" uid="uid://rvdlemi7piuf" path="res://assets/sounds/slime_jump_up.mp3" id="3_tdlq6"]
 [ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="3_xaofr"]
+[ext_resource type="PackedScene" uid="uid://dc8o6j1jtli2a" path="res://interactible/interaction/interaction_area.tscn" id="4_07nd1"]
 [ext_resource type="AudioStream" uid="uid://dshh135wis2kg" path="res://assets/sounds/slime_jump_down.mp3" id="4_fqeal"]
+
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nhk8n"]
 
@@ -101,6 +103,9 @@ _data = {
 "jump": SubResource("Animation_fp808")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mpiqv"]
+radius = 29.0043
+
 [node name="blue_slime" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 collision_layer = 8
@@ -128,9 +133,17 @@ interact_label = "BlueSlime"
 interact_type = "slime"
 interact_value = "blue"
 
+
+[node name="InteractionArea" parent="." instance=ExtResource("4_07nd1")]
+action_name = "catch"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_mpiqv")
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 volume_db = -20.0
 pitch_scale = 2.0
 max_distance = 300.0
 panning_strength = 3.0
 bus = &"SFX"
+

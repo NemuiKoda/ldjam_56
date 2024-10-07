@@ -371,8 +371,8 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_b0plu"]
 radius = 26.3354
 
-[node name="Player" type="CharacterBody2D"]
-z_index = 1
+[node name="Player" type="CharacterBody2D" groups=["player", "player1"]]
+
 scale = Vector2(3, 3)
 collision_layer = 2
 collision_mask = 3
