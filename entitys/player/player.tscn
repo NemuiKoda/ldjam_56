@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bbgekotruutm4"]
+[gd_scene load_steps=27 format=3 uid="uid://bbgekotruutm4"]
 
 [ext_resource type="Script" path="res://entitys/player/player.gd" id="1_hq055"]
 [ext_resource type="Texture2D" uid="uid://blchg3nn2m6uu" path="res://assets/OurAssets/PlayerWalkWithNet.png" id="2_fgp2p"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cwxwag6qj3grp" path="res://assets/sounds/footstep_inside2.wav" id="8_6730o"]
 [ext_resource type="AudioStream" uid="uid://oxymq34epane" path="res://assets/sounds/Discojunk - Steven O'Brien (Must Credit, CC-BY, www.steven-obrien.net).mp3" id="9_v1aa6"]
 [ext_resource type="AudioStream" uid="uid://5cy1ogb7irnh" path="res://assets/sounds/coin-drop-39914.mp3" id="10_upkrs"]
+[ext_resource type="AudioStream" uid="uid://dvnn2hi2bmf70" path="res://assets/sounds/upgrade.mp3" id="11_d34bb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m78t0"]
 radius = 8.74737
@@ -450,6 +451,9 @@ autostart = true
 
 [node name="rent_paid" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_upkrs")
+
+[node name="upgrade" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_d34bb")
 
 [connection signal="timeout" from="slushy_machine_timer" to="." method="_on_slushy_machine_timer_timeout"]
 [connection signal="area_entered" from="Interaction components/Interaction Area" to="." method="_on_interaction_area_area_entered"]

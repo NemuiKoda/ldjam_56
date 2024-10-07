@@ -364,6 +364,7 @@ func execute_interaction3():
 								money -= cost[0]
 								print(str(customerLevel))
 								UiManager.set_customer_level(customerLevel)
+								$upgrade.play()
 					"productionupgrade":
 						if productionLevel < maxproductionupgrades:
 							var cost = productionupgrade[productionLevel+1]
@@ -372,6 +373,7 @@ func execute_interaction3():
 								money -= cost[0]
 								print(str(productionLevel))
 								UiManager.set_machine_level(productionLevel)
+								$upgrade.play()
 					"movementupgrade":
 						print("MovementUpgrade")
 						if movementLevel < maxmovementupgrade:
@@ -382,6 +384,7 @@ func execute_interaction3():
 								print(str(movementLevel))
 								move_speed = movementupgrade[movementLevel][1]
 								UiManager.set_player_level(movementLevel)
+								$upgrade.play()
 
 func startProduction():	
 	slush_machine.isProducing = true
