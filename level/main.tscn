@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://m2ww0i5h4h31"]
+[gd_scene load_steps=45 format=3 uid="uid://m2ww0i5h4h31"]
 
 [ext_resource type="Texture2D" uid="uid://bfrchcl6r67s6" path="res://assets/tilemap/TX Tileset Stone Ground.png" id="1_owgqh"]
 [ext_resource type="Texture2D" uid="uid://c71n2dtonok6m" path="res://assets/tilemap/TX Tileset Wall.png" id="2_1cpqf"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://b1pfpv0o0uhdk" path="res://entitys/slime/green_slime.tscn" id="24_5rvgn"]
 [ext_resource type="PackedScene" uid="uid://iwsuk0og04iu" path="res://entitys/Spawner.tscn" id="24_cpetr"]
 [ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="25_hdght"]
+[ext_resource type="PackedScene" uid="uid://dc8o6j1jtli2a" path="res://interactible/interaction/interaction_area.tscn" id="29_cse6f"]
 [ext_resource type="PackedScene" uid="uid://dv1p876uxhrti" path="res://entitys/slime/slime_wall.tscn" id="30_4eoc2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewmak"]
@@ -866,6 +867,8 @@ sources/9 = SubResource("TileSetAtlasSource_fyvv8")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4j8pi"]
 size = Vector2(389.5, 190.5)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yofxn"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_em3k5"]
 atlas = ExtResource("2_1cpqf")
 region = Rect2(288, 144, 32, 32)
@@ -964,6 +967,13 @@ position = Vector2(849, -271)
 interact_label = "MovementUpgrade"
 interact_type = "upgrade"
 interact_value = "movementupgrade"
+
+[node name="InteractionArea" parent="MovementUpgrade" instance=ExtResource("29_cse6f")]
+action_name = "upgrade"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MovementUpgrade/InteractionArea"]
+scale = Vector2(5.77679, 5.77679)
+shape = SubResource("CircleShape2D_yofxn")
 
 [node name="CustomerUpgrade" parent="." instance=ExtResource("25_hdght")]
 position = Vector2(-238, 139)
