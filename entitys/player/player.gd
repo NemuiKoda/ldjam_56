@@ -21,7 +21,7 @@ extends CharacterBody2D
 
 #Inventory
 var slushy_inventory = [0,0,0,0,0,0,0] #[blue,red,green,cyan,yellow,purple,white]
-var money = 100
+var money = 500
 var rent = 50
 
 var time_start = 0
