@@ -8,16 +8,16 @@ script = ExtResource("1_i164a")
 
 [node name="CustomerSlot" parent="." instance=ExtResource("2_xcdpk")]
 unique_name_in_owner = true
-position = Vector2(255, -2)
+position = Vector2(264, 0)
 
 [node name="CustomerSlot2" parent="." instance=ExtResource("2_xcdpk")]
 unique_name_in_owner = true
-position = Vector2(211, -1)
+position = Vector2(212, 0)
 
 [node name="CustomerSlot3" parent="." instance=ExtResource("2_xcdpk")]
 unique_name_in_owner = true
-position = Vector2(165, 0)
+position = Vector2(161, 0)
 
 [node name="CustomerSlot4" parent="." instance=ExtResource("2_xcdpk")]
 unique_name_in_owner = true
-position = Vector2(120, 0)
+position = Vector2(107, 0)

@@ -33,10 +33,6 @@ shape = SubResource("RectangleShape2D_17pe4")
 scale = Vector2(3, 3)
 texture = ExtResource("3_8g74f")
 
-[node name="slushColors" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-
 [node name="container_left" parent="." instance=ExtResource("4_5bxxo")]
 position = Vector2(-36, -27)
 

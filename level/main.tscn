@@ -30,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://iwsuk0og04iu" path="res://entitys/Spawner.tscn" id="24_cpetr"]
 [ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="25_hdght"]
 [ext_resource type="PackedScene" uid="uid://dc8o6j1jtli2a" path="res://interactible/interaction/interaction_area.tscn" id="29_cse6f"]
-[ext_resource type="PackedScene" uid="uid://dv1p876uxhrti" path="res://entitys/slime/slime_wall.tscn" id="30_4eoc2"]
+[ext_resource type="PackedScene" path="res://entitys/slime/slime_wall.tscn" id="30_4eoc2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewmak"]
 texture = ExtResource("1_owgqh")
@@ -904,7 +904,6 @@ polygon = PackedVector2Array(-267, -418, 1057, -416, 1057, 287, 352, 288, 352, -
 
 [node name="CustomerSlots" parent="." instance=ExtResource("8_mg0jy")]
 position = Vector2(-187, 294)
-rotation = 0.0174533
 
 [node name="slushMachine" parent="." instance=ExtResource("10_0g232")]
 position = Vector2(256, -13)
@@ -980,7 +979,7 @@ interact_type = "upgrade"
 interact_value = "movementupgrade"
 
 [node name="InteractionArea" parent="MovementUpgrade" instance=ExtResource("29_cse6f")]
-action_name = "upgrade"
+action_name = "upgradeSpeed"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MovementUpgrade/InteractionArea"]
 scale = Vector2(5.77679, 5.77679)
@@ -993,7 +992,7 @@ interact_type = "upgrade"
 interact_value = "customerupgrade"
 
 [node name="InteractionArea" parent="CustomerUpgrade" instance=ExtResource("29_cse6f")]
-action_name = "upgrade"
+action_name = "upgradeCustomer"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerUpgrade/InteractionArea"]
 scale = Vector2(5.77679, 5.77679)
@@ -1004,13 +1003,6 @@ position = Vector2(257, 40)
 interact_label = "ProductionUpgrade"
 interact_type = "upgrade"
 interact_value = "productionupgrade"
-
-[node name="InteractionArea" parent="InteractArea" instance=ExtResource("29_cse6f")]
-action_name = "upgrade"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea/InteractionArea"]
-scale = Vector2(5.77679, 5.77679)
-shape = SubResource("CircleShape2D_yofxn")
 
 [node name="Player" parent="." instance=ExtResource("6_wsmm1")]
 position = Vector2(63, 141)
