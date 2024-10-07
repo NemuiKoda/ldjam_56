@@ -904,7 +904,6 @@ polygon = PackedVector2Array(-267, -418, 1057, -416, 1057, 287, 352, 288, 352, -
 
 [node name="CustomerSlots" parent="." instance=ExtResource("8_mg0jy")]
 position = Vector2(-187, 294)
-rotation = 0.0174533
 
 [node name="slushMachine" parent="." instance=ExtResource("10_0g232")]
 position = Vector2(256, -13)
