@@ -981,11 +981,25 @@ interact_label = "CustomerUpgrade"
 interact_type = "upgrade"
 interact_value = "customerupgrade"
 
+[node name="InteractionArea" parent="CustomerUpgrade" instance=ExtResource("29_cse6f")]
+action_name = "upgrade"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CustomerUpgrade/InteractionArea"]
+scale = Vector2(5.77679, 5.77679)
+shape = SubResource("CircleShape2D_yofxn")
+
 [node name="InteractArea" parent="." instance=ExtResource("25_hdght")]
 position = Vector2(913, 238)
 interact_label = "ProductionUpgrade"
 interact_type = "upgrade"
 interact_value = "productionupgrade"
+
+[node name="InteractionArea" parent="InteractArea" instance=ExtResource("29_cse6f")]
+action_name = "upgrade"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea/InteractionArea"]
+scale = Vector2(5.77679, 5.77679)
+shape = SubResource("CircleShape2D_yofxn")
 
 [node name="Player" parent="." instance=ExtResource("6_wsmm1")]
 position = Vector2(63, 141)
