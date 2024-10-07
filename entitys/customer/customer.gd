@@ -49,6 +49,7 @@ var customer_slots
 signal unit_removed
 
 func _ready():
+	$enter.play()
 	randomize()
 	customer_slots = get_tree().get_root().get_node("World/CustomerSlots")
 	slot = get_slot()
@@ -65,18 +66,6 @@ func _process(delta: float):
 		animation.play("customer"+ str(skin_number) +"_idle")
 	else:
 		animation.play("customer"+ str(skin_number) +"_walking")
-	
-	#if current_state == 0:
-		#$AnimatedSprite2D.play("idle")
-	#elif current_state == 1:
-		#if dir.x == -1:
-			#$AnimatedSprite2D.play("walk_w")
-		#if dir.x == 1:
-			#$AnimatedSprite2D.play("walk_e")
-		#if dir.y == -1:
-			#$AnimatedSprite2D.play("walk_n")
-		#if dir.y == 1:
-			#$AnimatedSprite2D.play("walk_s")
 	
 	if received_order:
 		leave()
@@ -108,6 +97,10 @@ func receive_order():
 func leave():
 	position += Vector2(0,100) * speed * 0.00006
 	if !leaving:
+		if rng.randi_range(0,1)==1:
+			$yeah.play()
+		else:
+			$yippi.play()
 		emit_signal("unit_removed")
 		leaving = true
 	if global_position.y > 500:
