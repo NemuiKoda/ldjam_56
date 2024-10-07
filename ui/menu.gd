@@ -2,9 +2,11 @@ extends Control
 
 func _ready():
 	$VBoxContainer/Start.grab_focus()
+	UiManager.get_node("/root/UiManager/UiElements").visible = false
 
 func _on_start_pressed():
 	get_tree().change_scene_to_file("res://level/main.tscn")
+	UiManager.get_node("/root/UiManager/UiElements").visible = true
 
 func _on_quit_pressed():
 	get_tree().quit()

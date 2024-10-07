@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var animation = $AnimationPlayer
+@onready var interaction_area: InteractionArea = $InteractionArea
 
 const speed = 100
 var dir = Vector2.RIGHT
@@ -104,6 +105,7 @@ signal unit_removed
 func _ready():
 	$enter.play()
 	randomize()
+	#interaction_area.interact = Callable(self, "_on_interact")
 	DialogManager.connect("dialog_finished", Callable(self, "_on_dialog_finished"))
 	customer_slots = get_tree().get_root().get_node("World/CustomerSlots")
 	slot = get_slot()
@@ -186,12 +188,3 @@ func leave():
 	if global_position.y > 500:
 		("I'M LEAVING")
 		self.queue_free()
-
-func _on_timer_timeout() -> void:
-	#received_order = true
-	#leave
-	pass
-
-
-func _on_interact_area_body_entered(body: Node2D) -> void:
-	pass

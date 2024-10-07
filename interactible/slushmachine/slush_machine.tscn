@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://ba1y2t7o3pkly"]
+[gd_scene load_steps=10 format=3 uid="uid://ba1y2t7o3pkly"]
+
 
 [ext_resource type="Script" path="res://interactible/slushmachine/slush_machine.gd" id="1_aspqt"]
 [ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="1_jpdo6"]
 [ext_resource type="Texture2D" uid="uid://dm8yjr3cgveim" path="res://assets/OurAssets/SlushMachine.png" id="3_8g74f"]
+[ext_resource type="PackedScene" uid="uid://dc8o6j1jtli2a" path="res://interactible/interaction/interaction_area.tscn" id="7_n4ujv"]
 [ext_resource type="PackedScene" uid="uid://cbgg807fur6ml" path="res://interactible/slushmachine/container_middle.tscn" id="4_2pvec"]
 [ext_resource type="PackedScene" uid="uid://cboi7457yyidr" path="res://interactible/slushmachine/container_left.tscn" id="4_5bxxo"]
 [ext_resource type="PackedScene" uid="uid://4xeqf5s317nq" path="res://interactible/slushmachine/container_right.tscn" id="5_cys36"]
@@ -10,8 +12,11 @@
 [ext_resource type="AudioStream" uid="uid://sctnuu0e08r2" path="res://assets/sounds/slushy-generator.mp3" id="8_cvshe"]
 [ext_resource type="AudioStream" uid="uid://bp84op7lwppbd" path="res://assets/sounds/slushy_finished.mp3" id="9_c7c88"]
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_17pe4"]
 size = Vector2(122, 98)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3lqqc"]
 
 [node name="slushMachine" type="CharacterBody2D"]
 script = ExtResource("1_aspqt")
@@ -43,6 +48,14 @@ position = Vector2(0, -24)
 [node name="container_right" parent="." instance=ExtResource("5_cys36")]
 position = Vector2(36, -24)
 
+
+[node name="InteractionArea" parent="." instance=ExtResource("7_n4ujv")]
+action_name = "slusher"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+scale = Vector2(8.76763, 8.76763)
+shape = SubResource("CircleShape2D_3lqqc")
+
 [node name="slush_noice" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_salhp")
 max_distance = 300.0
@@ -61,3 +74,4 @@ stream = ExtResource("9_c7c88")
 max_distance = 300.0
 panning_strength = 3.0
 bus = &"SFX"
+

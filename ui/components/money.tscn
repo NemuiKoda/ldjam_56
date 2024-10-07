@@ -1,7 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cncwyej7xclig"]
+[gd_scene load_steps=5 format=3 uid="uid://cncwyej7xclig"]
 
 [ext_resource type="Texture2D" uid="uid://dg32q6d1bt4sn" path="res://assets/OurAssets/Props.png" id="1_h5ym1"]
 [ext_resource type="Script" path="res://ui/components/money.gd" id="1_leu3u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rh85l"]
+bg_color = Color(0.165656, 0.165656, 0.165656, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yfh1u"]
 atlas = ExtResource("1_h5ym1")
@@ -21,6 +28,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(1.20479, 1.2)
+theme_override_styles/panel = SubResource("StyleBoxFlat_rh85l")
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2

@@ -13,7 +13,7 @@ var can_advance_line = false
 
 var dialog_timer: Timer
 
-signal dialog_finished
+signal dialog_finished()
 
 func _ready() -> void:
 	dialog_timer = Timer.new()
