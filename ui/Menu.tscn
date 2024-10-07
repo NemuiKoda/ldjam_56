@@ -34,6 +34,7 @@ offset_top = 85.0
 offset_right = 684.0
 offset_bottom = 244.0
 grow_horizontal = 2
+theme_override_colors/font_color = Color(0.0520789, 0.68064, 0, 1)
 theme_override_font_sizes/font_size = 120
 text = "THE SLUSHIEST SLIME"
 
