@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 			"start":
 				label.text = base_text_f + active_areas[0].action_name
 			"upgradeCustomer":
-				label.text = base_text_u + "to add a Customer" + " for 50 $"
+				label.text = base_text_u + "to attract new Customers faster" + " for 50 $"
 			"upgradeSpeed":
 				label.text = base_text_u + "to buy faster Shoes" + " for 50 $"
 			"storage":

@@ -42,10 +42,10 @@ var movementupgrade= [
 var maxcustomeupgrader = 3
 var customerLevel = 0
 var customerupgrade= [
-	[0, 1],
-	[50, 2],
-	[50, 3],
-	[50, 4]
+	[0, 8],
+	[50, 6],
+	[50, 4],
+	[50, 2]
 ]
 
 var maxproductionupgrades= 2
@@ -79,7 +79,7 @@ func _process(_delta: float):
 	UiManager.set_yellow_count(slushy_inventory[4])
 	UiManager.set_purple_count(slushy_inventory[5])
 	UiManager.set_white_count(slushy_inventory[6])
-	customerSpawner.spawn_units_max_amount = customerupgrade[customerLevel][1]
+	customerSpawner.spawn_time_intervall = customerupgrade[customerLevel][1]
 	slushy_machine_timer.wait_time = (6/productionupgrade[productionLevel][1])
 	container_left_time.set_animation_speed(productionupgrade[productionLevel][1])
 	container_middle_time.set_animation_speed(productionupgrade[productionLevel][1])
