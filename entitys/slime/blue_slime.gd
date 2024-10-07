@@ -9,6 +9,9 @@ signal unit_removed
 var in_jump = false
 var rng = RandomNumberGenerator.new()
 
+func _ready():
+	animation.speed_scale = rng.randf_range(0.9,1.1)
+
 func _physics_process(_delta):
 	# moving logic
 	if !in_jump:

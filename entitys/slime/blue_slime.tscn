@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" path="res://entitys/slime/blue_slime.gd" id="1_phech"]
 [ext_resource type="Texture2D" uid="uid://b8qaifn5gv1fn" path="res://assets/OurAssets/BlueSlime.png" id="2_3nygh"]
+[ext_resource type="AudioStream" uid="uid://rvdlemi7piuf" path="res://assets/sounds/slime_jump_up.mp3" id="3_tdlq6"]
 [ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="3_xaofr"]
 [ext_resource type="PackedScene" uid="uid://dc8o6j1jtli2a" path="res://interactible/interaction/interaction_area.tscn" id="4_07nd1"]
+[ext_resource type="AudioStream" uid="uid://dshh135wis2kg" path="res://assets/sounds/slime_jump_down.mp3" id="4_fqeal"]
+
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nhk8n"]
 
@@ -73,6 +76,25 @@ tracks/1/keys = {
 "method": &"jump"
 }]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0588,
+"stream": ExtResource("3_tdlq6")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0571,
+"stream": ExtResource("4_fqeal")
+}],
+"times": PackedFloat32Array(0.2, 0.766667)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mpytp"]
 _data = {
@@ -86,6 +108,8 @@ radius = 29.0043
 
 [node name="blue_slime" type="CharacterBody2D"]
 scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 9
 script = ExtResource("1_phech")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -109,8 +133,17 @@ interact_label = "BlueSlime"
 interact_type = "slime"
 interact_value = "blue"
 
+
 [node name="InteractionArea" parent="." instance=ExtResource("4_07nd1")]
 action_name = "catch"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_mpiqv")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+volume_db = -20.0
+pitch_scale = 2.0
+max_distance = 300.0
+panning_strength = 3.0
+bus = &"SFX"
+

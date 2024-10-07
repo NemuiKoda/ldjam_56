@@ -19,24 +19,24 @@ scale = Vector2(0.476, 0.476)
 script = ExtResource("1_46mgq")
 
 [node name="InteractArea" parent="." instance=ExtResource("1_rhslf")]
-position = Vector2(0, 86)
+position = Vector2(0, -52.521)
 scale = Vector2(1.39792, 1.88)
 interact_label = "chest_green"
 interact_type = "storage"
 interact_value = "chest_green"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -45.5)
+position = Vector2(-0.327727, -48.1849)
 shape = SubResource("RectangleShape2D_knv2u")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(71, -40)
+position = Vector2(70.6723, -42.6849)
 shape = SubResource("SegmentShape2D_0qqym")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(-69, -40)
+position = Vector2(-69.3277, -42.6849)
 shape = SubResource("SegmentShape2D_0qqym")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 90)
+position = Vector2(-1.32773, 87.3151)
 shape = SubResource("SegmentShape2D_n4f5r")

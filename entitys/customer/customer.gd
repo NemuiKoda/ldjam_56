@@ -103,6 +103,7 @@ var dialog_ended = false
 signal unit_removed
 
 func _ready():
+	$enter.play()
 	randomize()
 	#interaction_area.interact = Callable(self, "_on_interact")
 	DialogManager.connect("dialog_finished", Callable(self, "_on_dialog_finished"))
@@ -139,18 +140,6 @@ func _process(delta: float):
 		animation.play("customer"+ str(skin_number) +"_idle")
 	else:
 		animation.play("customer"+ str(skin_number) +"_walking")
-	
-	#if current_state == 0:
-		#$AnimatedSprite2D.play("idle")
-	#elif current_state == 1:
-		#if dir.x == -1:
-			#$AnimatedSprite2D.play("walk_w")
-		#if dir.x == 1:
-			#$AnimatedSprite2D.play("walk_e")
-		#if dir.y == -1:
-			#$AnimatedSprite2D.play("walk_n")
-		#if dir.y == 1:
-			#$AnimatedSprite2D.play("walk_s")
 	
 	if received_order:
 		leave()
@@ -189,6 +178,10 @@ func _on_dialog_finished():
 func leave():
 	position += Vector2(0,100) * speed * 0.00006
 	if !leaving:
+		if rng.randi_range(0,1)==1:
+			$yeah.play()
+		else:
+			$yippi.play()
 		DialogManager._queue_free_speech_bubble()
 		emit_signal("unit_removed")
 		leaving = true

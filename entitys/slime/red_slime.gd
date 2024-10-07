@@ -9,6 +9,9 @@ signal unit_removed
 var in_jump = false
 var rng = RandomNumberGenerator.new()
 
+func _ready():
+	animation.speed_scale = rng.randf_range(0.9,1.1)
+
 func _physics_process(_delta):
 	# moving logic
 	if !in_jump:
@@ -31,7 +34,6 @@ func _physics_process(_delta):
 		move_and_slide()
 
 func jump():
-	set_collision_layer_value(1, !get_collision_layer_value(1))
 	in_jump = !in_jump
 	
 func deleteSlime():
