@@ -14,6 +14,9 @@ extends Node
 @onready var machine_upgrade_label: Label = %Upgrades.get_node("%MachineUpgradeLabel2")
 @onready var customer_upgrade_label: Label = %Upgrades.get_node("%CustomerUpgradeLabel2")
 
+@onready var rent_timer = $UiElements/RentTimer
+@onready var rentcost = $UiElements/RentCost
+
 var blue_count: int
 var red_count: int
 var green_count: int
@@ -42,6 +45,14 @@ func _process(delta) -> void:
 	player_upgrade_label.text = str(player_level)
 	machine_upgrade_label.text = str(machine_level)
 	customer_upgrade_label.text = str(customer_level)
+
+
+func set_timer(timer):
+	rent_timer.set_player_timer(timer)
+	
+func rent_cost(rent):
+	rentcost.rent = rent
+	
 	
 # =========================================== Money
 	

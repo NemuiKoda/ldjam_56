@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbtqxxlg3fl83"]
+[gd_scene load_steps=8 format=3 uid="uid://cbtqxxlg3fl83"]
 
 [ext_resource type="Script" path="res://ui/ui_manager.gd" id="1_1n6g5"]
 [ext_resource type="PackedScene" uid="uid://cncwyej7xclig" path="res://ui/components/money.tscn" id="1_6shhf"]
 [ext_resource type="PackedScene" uid="uid://d02s1w7xl3xen" path="res://ui/components/slushies.tscn" id="2_iir80"]
 [ext_resource type="PackedScene" uid="uid://rcthmnow6wuw" path="res://ui/components/upgrades.tscn" id="3_0ueje"]
-[ext_resource type="PackedScene" uid="uid://c6lkr17yrco40" path="res://ui/components/rent_timer.tscn" id="5_8x2xo"]
+[ext_resource type="PackedScene" uid="uid://chdvovr4dc8i0" path="res://ui/components/rent_timer.tscn" id="5_8x2xo"]
+[ext_resource type="PackedScene" uid="uid://846h5mhlteig" path="res://ui/components/rent_cost.tscn" id="6_edqv6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0evbo"]
 bg_color = Color(0.20871, 0.20871, 0.20871, 1)
@@ -40,10 +41,19 @@ offset_right = 1760.0
 offset_bottom = 12.0
 
 [node name="RentTimer" parent="UiElements" instance=ExtResource("5_8x2xo")]
-offset_left = 1386.0
-offset_top = 25.0
-offset_right = 1386.0
-offset_bottom = 25.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -210.0
+grow_horizontal = 2
+
+[node name="RentCost" parent="UiElements" instance=ExtResource("6_edqv6")]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 45.0
+offset_right = 150.0
+grow_horizontal = 2
 
 [node name="QuestBox" type="CanvasLayer" parent="."]
 visible = false

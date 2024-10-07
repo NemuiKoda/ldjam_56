@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=45 format=3 uid="uid://m2ww0i5h4h31"]
-
+[gd_scene load_steps=46 format=3 uid="uid://m2ww0i5h4h31"]
 
 [ext_resource type="Texture2D" uid="uid://bfrchcl6r67s6" path="res://assets/tilemap/TX Tileset Stone Ground.png" id="1_owgqh"]
 [ext_resource type="Texture2D" uid="uid://c71n2dtonok6m" path="res://assets/tilemap/TX Tileset Wall.png" id="2_1cpqf"]
