@@ -29,7 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://b1pfpv0o0uhdk" path="res://entitys/slime/green_slime.tscn" id="24_5rvgn"]
 [ext_resource type="PackedScene" uid="uid://iwsuk0og04iu" path="res://entitys/Spawner.tscn" id="24_cpetr"]
 [ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="25_hdght"]
-[ext_resource type="PackedScene" path="res://entitys/slime/collision.tscn" id="33_87wx7"]
+[ext_resource type="PackedScene" uid="uid://dv1p876uxhrti" path="res://entitys/slime/slime_wall.tscn" id="30_4eoc2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewmak"]
 texture = ExtResource("1_owgqh")
@@ -988,8 +988,8 @@ position = Vector2(-240, 90)
 scale = Vector2(1.58141, 1.58141)
 texture = SubResource("AtlasTexture_em3k5")
 
-[node name="Collision" parent="." instance=ExtResource("33_87wx7")]
-position = Vector2(350, 66)
+[node name="SlimeWall" parent="." instance=ExtResource("30_4eoc2")]
+position = Vector2(351, 7)
 
 [connection signal="area_entered" from="Inside" to="Player" method="_on_inside_area_entered"]
 [connection signal="area_exited" from="Inside" to="Player" method="_on_inside_area_exited"]

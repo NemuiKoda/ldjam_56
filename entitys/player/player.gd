@@ -186,6 +186,13 @@ func execute_interaction():
 		catching = true
 	if all_interactions:
 		var cur_interaction = all_interactions[0]
+		var i = 0
+		for interaction in all_interactions:
+			if interaction.interact_type == "item":
+				cur_interaction = all_interactions[i]
+				break
+			i += 1
+		
 		match cur_interaction.interact_type:
 			"slime" :
 					if carrying_slime == false and catch_mode:
@@ -331,11 +338,21 @@ func execute_interaction2():
 			"slushMachine":
 				if slush_machine.isProducing == false and (slush_machine.blue_slime != 0 or slush_machine.red_slime !=0 or slush_machine.green_slime != 0):
 						startProduction()
-		
+
 func execute_interaction3():
 	print("U")
 	if all_interactions:
-		var cur_interaction = all_interactions[0]
+		var i = 0
+		var cur_interaction
+		for interaction in all_interactions:
+			if interaction.interact_type == "upgrade":
+				cur_interaction = all_interactions[i]
+				break
+			i += 1
+		if cur_interaction == null:
+			print("no upgrade found")
+			return
+		print("upgrade found")
 		match cur_interaction.interact_type:
 			"upgrade":
 				match cur_interaction.interact_value:
