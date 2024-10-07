@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=46 format=3 uid="uid://m2ww0i5h4h31"]
-
+[gd_scene load_steps=43 format=3 uid="uid://m2ww0i5h4h31"]
 
 [ext_resource type="Texture2D" uid="uid://bfrchcl6r67s6" path="res://assets/tilemap/TX Tileset Stone Ground.png" id="1_owgqh"]
 [ext_resource type="Texture2D" uid="uid://c71n2dtonok6m" path="res://assets/tilemap/TX Tileset Wall.png" id="2_1cpqf"]
@@ -9,13 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bntafodq0ncxe" path="res://assets/tilemap/TX Props.png" id="5_chedb"]
 [ext_resource type="Texture2D" uid="uid://bd5rhxlwehu8k" path="res://assets/tilemap/assets_version1.1.png" id="6_14a1w"]
 [ext_resource type="PackedScene" uid="uid://bbgekotruutm4" path="res://entitys/player/player.tscn" id="6_wsmm1"]
-[ext_resource type="PackedScene" path="res://ui/money.tscn" id="7_lcqwh"]
 [ext_resource type="Texture2D" uid="uid://vir6d6yrbs2p" path="res://assets/tilemap/assets.png" id="7_q861y"]
-[ext_resource type="PackedScene" path="res://ui/slushies.tscn" id="8_4etsp"]
 [ext_resource type="Texture2D" uid="uid://bbjen4itfxgvq" path="res://assets/tilemap/fence_version1.1.png" id="8_ichsg"]
 [ext_resource type="PackedScene" uid="uid://dkds6rp3a4db8" path="res://level/customer_slots.tscn" id="8_mg0jy"]
-[ext_resource type="PackedScene" uid="uid://rcthmnow6wuw" path="res://ui/upgrades.tscn" id="9_2a0wo"]
-[ext_resource type="PackedScene" uid="uid://h6ad4s2iv6yi" path="res://entitys/customer/customer.tscn" id="9_mk5qq"]
+[ext_resource type="PackedScene" uid="uid://bd6p1h607yyh7" path="res://entitys/customer/customer.tscn" id="9_mk5qq"]
 [ext_resource type="Texture2D" uid="uid://b7fjntoxvr6b7" path="res://assets/tilemap/TX Tileset Stone Ground2.png" id="9_scgkq"]
 [ext_resource type="PackedScene" uid="uid://ba1y2t7o3pkly" path="res://interactible/slushmachine/slush_machine.tscn" id="10_0g232"]
 [ext_resource type="PackedScene" uid="uid://c523y55hynrjh" path="res://interactible/storage/chest_blue.tscn" id="11_yfkc4"]
@@ -30,11 +25,11 @@
 [ext_resource type="PackedScene" uid="uid://blkr0aky4xlkj" path="res://interactible/slushy/slushy_red.tscn" id="20_aqy4u"]
 [ext_resource type="PackedScene" uid="uid://co5ua3suroiok" path="res://entitys/AreaSpawner.tscn" id="21_xie4y"]
 [ext_resource type="PackedScene" uid="uid://d2rlnjpscqq8y" path="res://entitys/slime/blue_slime.tscn" id="22_4v36t"]
-[ext_resource type="PackedScene" uid="uid://d0p33qqp6j52v" path="res://entitys/slime/red_slime.tscn" id="23_tgohe"]
+[ext_resource type="PackedScene" uid="uid://boxhqidhsigbr" path="res://entitys/slime/red_slime.tscn" id="23_tgohe"]
 [ext_resource type="PackedScene" uid="uid://b1pfpv0o0uhdk" path="res://entitys/slime/green_slime.tscn" id="24_5rvgn"]
 [ext_resource type="PackedScene" uid="uid://iwsuk0og04iu" path="res://entitys/Spawner.tscn" id="24_cpetr"]
 [ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="25_hdght"]
-[ext_resource type="PackedScene" uid="uid://dqxmay1yyxv1a" path="res://entitys/slime/collision.tscn" id="33_87wx7"]
+[ext_resource type="PackedScene" path="res://entitys/slime/collision.tscn" id="33_87wx7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewmak"]
 texture = ExtResource("1_owgqh")
@@ -121,15 +116,10 @@ texture_region_size = Vector2i(32, 32)
 13:2/0 = 0
 13:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:3/0 = 0
-1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -10.25, -16, -11)
 2:3/0 = 0
-2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -10.25, -16, -10)
 3:3/0 = 0
-3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -10, -16, -10.25)
 12:3/0 = 0
-12:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -7.5, -16, -7)
 13:3/0 = 0
-13:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -7.5, -16, -7.25)
 1:4/0 = 0
 2:4/0 = 0
 3:4/0 = 0
@@ -159,27 +149,22 @@ texture_region_size = Vector2i(32, 32)
 8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -48.5, 16, -48.5, 16, 46.5, -16, 47.5)
 1:6/size_in_atlas = Vector2i(3, 1)
 1:6/0 = 0
-1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-46.669, -16.2635, 49.4975, -16.2635, 50, -7.5, -48.5, -8.5)
 1:7/size_in_atlas = Vector2i(3, 1)
 1:7/0 = 0
 6:6/0 = 0
 6:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 6:7/0 = 0
 1:9/0 = 0
-1:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -10.25, -16, -10)
 1:10/0 = 0
 2:9/0 = 0
-2:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -9.5, -16, -9.5)
 4:9/0 = 0
-4:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -11, -16, -11)
 5:9/0 = 0
-5:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -10.75, -16, -11)
 5:10/0 = 0
 4:10/0 = 0
 2:10/0 = 0
 2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 4:6/0 = 0
-4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, -9.75, -16, -9.75)
 10:6/0 = 0
 10:5/0 = 0
 11:6/0 = 0
@@ -192,9 +177,9 @@ texture_region_size = Vector2i(32, 32)
 13:7/0 = 0
 8:6/0 = 0
 5:5/0 = 0
-5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -42, 16, -42, 16, -50, -17, -50)
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-17.3241, -48.0833, 17.6777, -47.7297, 17.3241, -51.6188, -17.3241, -52.3259)
 6:5/0 = 0
-6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-17, -50, -16, -41, 15, -42, 16, -51)
+6:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -53.25, -16, -48, 15.25, -48, 16, -54.25)
 7:5/0 = 0
 7:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, -16, -11, 16, -11, 16, -16)
 9:5/0 = 0
@@ -945,8 +930,7 @@ position = Vector2(255, 35)
 position = Vector2(-65, 13)
 
 [node name="ChestGreen" parent="." instance=ExtResource("19_urd1s")]
-position = Vector2(256, 302)
-rotation = -3.14159
+position = Vector2(254, 282)
 
 [node name="ChestRed" parent="." instance=ExtResource("13_5p2kt")]
 position = Vector2(96, 13)
@@ -997,7 +981,6 @@ interact_value = "productionupgrade"
 position = Vector2(63, 141)
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
-
 
 [node name="Tisch" type="Sprite2D" parent="."]
 y_sort_enabled = true

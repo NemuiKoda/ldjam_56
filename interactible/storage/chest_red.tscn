@@ -8,27 +8,27 @@ script/source = "extends Node2D
 @export var red_slime_stored = 0
 "
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgths"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ef0ce"]
 size = Vector2(142, 7)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_o4gys"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_66r0t"]
 a = Vector2(0, -4)
-b = Vector2(0, 128)
+b = Vector2(-3.05176e-05, 65.6582)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_d4ftu"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_afgqy"]
 a = Vector2(-69, -3)
 b = Vector2(73, -4)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_faypf"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ho0bm"]
 a = Vector2(-7.62939e-06, 90.3382)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_0wwkq"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_t8cjl"]
 a = Vector2(7.62939e-06, 96.6409)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_o2jut"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_gpeb8"]
 a = Vector2(52.5222, 8.40355)
 
-[sub_resource type="SegmentShape2D" id="SegmentShape2D_vp7uf"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lrl8c"]
 a = Vector2(-54.6231, 8.40356)
 
 [node name="ChestRed" type="CharacterBody2D"]
@@ -45,34 +45,34 @@ interact_value = "chest_red"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -105.044)
 scale = Vector2(1.75, 1)
-shape = SubResource("RectangleShape2D_lgths")
+shape = SubResource("RectangleShape2D_ef0ce")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(71.43, -18.908)
 scale = Vector2(1.008, 0.832)
-shape = SubResource("SegmentShape2D_o4gys")
+shape = SubResource("SegmentShape2D_66r0t")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
 position = Vector2(-69.3293, -18.908)
 scale = Vector2(1.00844, 0.831931)
-shape = SubResource("SegmentShape2D_o4gys")
+shape = SubResource("SegmentShape2D_66r0t")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 90)
-shape = SubResource("SegmentShape2D_d4ftu")
+position = Vector2(1.19209e-07, 39.9169)
+shape = SubResource("SegmentShape2D_afgqy")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
 position = Vector2(123.952, -111.347)
-shape = SubResource("SegmentShape2D_faypf")
+shape = SubResource("SegmentShape2D_ho0bm")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
 position = Vector2(-123.952, -115.549)
-shape = SubResource("SegmentShape2D_0wwkq")
+shape = SubResource("SegmentShape2D_t8cjl")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
 position = Vector2(71.4302, -29.4124)
-shape = SubResource("SegmentShape2D_o2jut")
+shape = SubResource("SegmentShape2D_gpeb8")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="."]
 position = Vector2(-69.3293, -29.4124)
-shape = SubResource("SegmentShape2D_vp7uf")
+shape = SubResource("SegmentShape2D_lrl8c")
