@@ -23,6 +23,57 @@ var slushy_requests = [
 	["WHITE", 30]
 ]
 
+var lines: Array[String] = []
+
+var blue_lines: Array[String] = [
+	"Hey, how are you?",
+	"Let me think.",
+	"A BLUE Slushy is what I crave.",
+	"BLUE"
+]
+
+var red_lines: Array[String] = [
+	"Hey, how are you?",
+	"Let me think.",
+	"A RED Slushy is what I crave.",
+	"RED"
+]
+
+var green_lines: Array[String] = [
+	"Hey, how are you?",
+	"Let me think.",
+	"A GREEN Slushy is what I crave.",
+	"GREEN"
+]
+
+var cyan_lines: Array[String] = [
+	"Hey, how are you?",
+	"Let me think.",
+	"A CYAN Slushy is what I crave.",
+	"CYAN"
+]
+
+var purple_lines: Array[String] = [
+	"Hey, how are you?",
+	"Let me think.",
+	"A PURPLE Slushy is what I crave.",
+	"PURPLE"
+]
+
+var yellow_lines: Array[String] = [
+	"Hey, how are you?",
+	"Let me think.",
+	"A YELLOW Slushy is what I crave.",
+	"YELLOW"
+]
+
+var white_lines: Array[String] = [
+	"Hey, how are you?",
+	"Let me think.",
+	"A WHITE Slushy is what I crave.",
+	"WHITE"
+]
+
 var is_in_slot = false
 @export var received_order = false
 @export var order = ""
@@ -46,15 +97,36 @@ var leaving = false
 
 var customer_slots
 
+var dialog_ended = false
+
 signal unit_removed
 
 func _ready():
 	randomize()
+	DialogManager.connect("dialog_finished", Callable(self, "_on_dialog_finished"))
 	customer_slots = get_tree().get_root().get_node("World/CustomerSlots")
 	slot = get_slot()
 	order = choose(slushy_requests)
+	
+	match order[0]:
+		"BLUE":
+			lines = blue_lines
+		"RED":
+			lines = red_lines
+		"GREEN":
+			lines = green_lines
+		"CYAN":
+			lines = cyan_lines
+		"PURPLE":
+			lines = purple_lines
+		"YELLOW":
+			lines = yellow_lines
+		"WHITE":
+			lines = white_lines
+		
 	$InteractionComponents/InteractArea.interact_label = order[0]
 	value = order[1]
+	
 	if rng.randi_range(0,1)==1:
 		$Sprite2D.flip_h = true
 	else:
@@ -88,6 +160,7 @@ func _process(delta: float):
 			position += dir * speed * delta
 			if global_position.distance_to(slot.global_position) < 1:
 				is_in_slot = true
+				DialogManager.start_dialog(global_position, lines)
 
 func get_slot():
 	var open_slots = customer_slots.get_free_slots()
@@ -103,11 +176,18 @@ func choose(array):
 	return array.front()
 	
 func receive_order():
-	received_order = true;
+	received_order = true
+	
+func getDialogEnded():
+	return dialog_ended
+	
+func _on_dialog_finished():
+	dialog_ended = true
 
 func leave():
 	position += Vector2(0,100) * speed * 0.00006
 	if !leaving:
+		DialogManager._queue_free_speech_bubble()
 		emit_signal("unit_removed")
 		leaving = true
 	if global_position.y > 500:
@@ -117,4 +197,8 @@ func leave():
 func _on_timer_timeout() -> void:
 	#received_order = true
 	#leave
+	pass
+
+
+func _on_interact_area_body_entered(body: Node2D) -> void:
 	pass
