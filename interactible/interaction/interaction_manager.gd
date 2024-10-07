@@ -17,11 +17,16 @@ func _process(delta: float) -> void:
 			"sell" , "catch", "pick up":
 				label.text = base_text_e + active_areas[0].action_name
 			"slusher":
-				label.text = "[E] to add slime \n [F] to start machine \n [U] to upgrade machine"
+				label.text = "[E] to add slime \n [F] to start machine \n [U] to upgrade machine for 50 $"
 			"start":
 				label.text = base_text_f + active_areas[0].action_name
-			"upgrade":
-				label.text = base_text_u + active_areas[0].action_name
+			"upgradeCustomer":
+				label.text = base_text_u + "to add a Customer" + " for 50 $"
+			"upgradeSpeed":
+				label.text = base_text_u + "to buy faster Shoes" + " for 50 $"
+			"storage":
+				label.text = "[E] to store/retrieve slime"
+				
 		#box.global_position = player.global_position
 		#box.global_position.y -= 64
 		#box.global_position.x -= box.size.x / 2

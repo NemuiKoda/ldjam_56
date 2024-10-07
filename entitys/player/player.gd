@@ -21,7 +21,7 @@ extends CharacterBody2D
 
 #Inventory
 var slushy_inventory = [0,0,0,0,0,0,0] #[blue,red,green,cyan,yellow,purple,white]
-var money = 150
+var money = 100
 var rent = 50
 
 var time_start = 0
@@ -33,8 +33,8 @@ var movementLevel = 0
 var movementupgrade= [
 	[0, 250],
 	[50, 350],
-	[100, 450],
-	[150, 550]
+	[50, 450],
+	[50, 550]
 ]
 
 
@@ -42,17 +42,17 @@ var maxcustomeupgrader = 3
 var customerLevel = 0
 var customerupgrade= [
 	[0, 1],
-	[25, 2],
-	[100, 3],
-	[150, 4]
+	[50, 2],
+	[50, 3],
+	[50, 4]
 ]
 
 var maxproductionupgrades= 2
 var productionLevel = 0
 var productionupgrade= [
-	[0, 0.33],
+	[50, 0.33],
 	[50, 0.66],
-	[100, 1.00]
+	[50, 1.00]
 ]
 
 var carrying_slime = false
