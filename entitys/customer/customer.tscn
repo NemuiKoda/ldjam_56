@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://h6ad4s2iv6yi"]
+[gd_scene load_steps=17 format=3 uid="uid://bd6p1h607yyh7"]
 
 [ext_resource type="Script" path="res://entitys/customer/customer.gd" id="1_r3ef4"]
 [ext_resource type="Texture2D" uid="uid://d4er8olhpflu8" path="res://assets/OurAssets/Chars.png" id="2_pyytr"]
@@ -235,7 +235,9 @@ autostart = true
 [node name="InteractArea" parent="InteractionComponents" instance=ExtResource("3_42t7o")]
 position = Vector2(0, -60)
 scale = Vector2(0.18, 1)
+monitoring = true
 interact_type = "customer"
 interact_value = "10"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="InteractionComponents/InteractArea" to="." method="_on_interact_area_body_entered"]

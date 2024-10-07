@@ -1,7 +1,17 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://f6j43443fvfv"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://f6j43443fvfv"]
 
 [ext_resource type="FontFile" uid="uid://cabhkhwcpan8" path="res://assets/our_themes/RobotoMono-Bold.ttf" id="1_nibgp"]
+[ext_resource type="Texture2D" uid="uid://cj6awglysyf4a" path="res://assets/OurAssets/UI.png" id="2_mf6x4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3c8h"]
+atlas = ExtResource("2_mf6x4")
+region = Rect2(0, 0, 132, 19)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q5x3l"]
+texture = SubResource("AtlasTexture_y3c8h")
+draw_center = false
 
 [resource]
 Label/font_sizes/font_size = 24
 Label/fonts/font = ExtResource("1_nibgp")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_q5x3l")

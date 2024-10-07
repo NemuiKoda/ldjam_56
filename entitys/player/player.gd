@@ -17,9 +17,6 @@ extends CharacterBody2D
 @onready var chest_green = $"../ChestGreen"
 @onready var slushy_production_location = $"../Slushyspawn"
 @onready var inside = $"../Inside"
-@onready var moneyUI = $Money
-@onready var slushyUI = $Slushies
-@onready var upgradeUI = $Upgrades
 @onready var customerSpawner = $"../Spawner"
 
 #Inventory
@@ -64,14 +61,14 @@ func _ready():
 	update_interactions()
 
 func _process(delta: float):
-	moneyUI.set_value(money)
-	slushyUI.set_blue_count(slushy_inventory[0])
-	slushyUI.set_red_count(slushy_inventory[1])
-	slushyUI.set_green_count(slushy_inventory[2])
-	slushyUI.set_cyan_count(slushy_inventory[3])
-	slushyUI.set_yellow_count(slushy_inventory[4])
-	slushyUI.set_purple_count(slushy_inventory[5])
-	slushyUI.set_white_count(slushy_inventory[6])
+	UiManager.set_money(money)
+	UiManager.set_blue_count(slushy_inventory[0])
+	UiManager.set_red_count(slushy_inventory[1])
+	UiManager.set_green_count(slushy_inventory[2])
+	UiManager.set_cyan_count(slushy_inventory[3])
+	UiManager.set_yellow_count(slushy_inventory[4])
+	UiManager.set_purple_count(slushy_inventory[5])
+	UiManager.set_white_count(slushy_inventory[6])
 	customerSpawner.spawn_units_max_amount = customerupgrade[customerLevel][1]
 	slushy_machine_timer.wait_time = (6/productionupgrade[productionLevel][1])
 	container_left_time.set_animation_speed(productionupgrade[productionLevel][1])
@@ -239,7 +236,7 @@ func execute_interaction():
 					"white_slushy": slushy_inventory[6] = slushy_inventory[6] + 1
 				cur_interaction.get_parent().queue_free()
 			"customer":
-				if cur_interaction.get_parent().get_parent().getReceivedOrder() == true:
+				if cur_interaction.get_parent().get_parent().getReceivedOrder() or !cur_interaction.get_parent().get_parent().getDialogEnded():
 					return
 				else:
 					match cur_interaction.get_parent().get_parent().getOrder():
@@ -302,7 +299,7 @@ func execute_interaction3():
 								customerLevel += 1
 								money -= cost[0]
 								print(str(customerLevel))
-								upgradeUI.set_customer_level(customerLevel)
+								UiManager.set_customer_level(customerLevel)
 					"productionupgrade":
 						if productionLevel < maxproductionupgrades:
 							var cost = productionupgrade[productionLevel+1]
@@ -310,7 +307,7 @@ func execute_interaction3():
 								productionLevel += 1
 								money -= cost[0]
 								print(str(productionLevel))
-								upgradeUI.set_machine_level(productionLevel)
+								UiManager.set_machine_level(productionLevel)
 					"movementupgrade":
 						print("MovementUpgrade")
 						if movementLevel < maxmovementupgrade:
@@ -320,7 +317,7 @@ func execute_interaction3():
 								money -= cost[0]
 								print(str(movementLevel))
 								move_speed = movementupgrade[movementLevel][1]
-								upgradeUI.set_player_level(movementLevel)
+								UiManager.set_player_level(movementLevel)
 
 func startProduction():	
 	slush_machine.isProducing = true

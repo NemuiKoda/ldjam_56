@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://d02s1w7xl3xen"]
 
 [ext_resource type="Theme" uid="uid://f6j43443fvfv" path="res://assets/our_themes/ui.tres" id="1_0tlif"]
-[ext_resource type="Script" path="res://ui/slushies.gd" id="1_jsebp"]
+[ext_resource type="Script" path="res://ui/components/slushies.gd" id="1_jsebp"]
 [ext_resource type="Texture2D" uid="uid://dg32q6d1bt4sn" path="res://assets/OurAssets/Props.png" id="1_uk5io"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1umlj"]
@@ -52,7 +52,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="GridContainer" type="GridContainer" parent="MenuBacksplash/MarginContainer"]
 layout_mode = 2
-columns = 2
+columns = 4
 
 [node name="Blue" type="TextureRect" parent="MenuBacksplash/MarginContainer/GridContainer"]
 layout_mode = 2
