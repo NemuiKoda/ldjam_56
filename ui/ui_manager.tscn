@@ -1,0 +1,73 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbtqxxlg3fl83"]
+
+[ext_resource type="Script" path="res://ui/ui_manager.gd" id="1_1n6g5"]
+[ext_resource type="PackedScene" uid="uid://cncwyej7xclig" path="res://ui/components/money.tscn" id="1_6shhf"]
+[ext_resource type="PackedScene" uid="uid://d02s1w7xl3xen" path="res://ui/components/slushies.tscn" id="2_iir80"]
+[ext_resource type="PackedScene" uid="uid://rcthmnow6wuw" path="res://ui/components/upgrades.tscn" id="3_0ueje"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0evbo"]
+bg_color = Color(0.20871, 0.20871, 0.20871, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="UiManager" type="Node"]
+script = ExtResource("1_1n6g5")
+
+[node name="UiElements" type="CanvasLayer" parent="."]
+
+[node name="Money" parent="UiElements" instance=ExtResource("1_6shhf")]
+unique_name_in_owner = true
+offset_left = 12.0
+offset_top = 1020.0
+offset_right = 12.0
+offset_bottom = 1020.0
+
+[node name="Slushies" parent="UiElements" instance=ExtResource("2_iir80")]
+unique_name_in_owner = true
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 12.0
+offset_bottom = 12.0
+
+[node name="Upgrades" parent="UiElements" instance=ExtResource("3_0ueje")]
+unique_name_in_owner = true
+offset_left = 1760.0
+offset_top = 12.0
+offset_right = 1760.0
+offset_bottom = 12.0
+
+[node name="QuestBox" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Background" type="PanelContainer" parent="QuestBox"]
+offset_left = 12.0
+offset_top = 368.0
+offset_right = 257.0
+offset_bottom = 438.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0evbo")
+
+[node name="MarginContainer" type="MarginContainer" parent="QuestBox/Background"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="QuestGrid" type="GridContainer" parent="QuestBox/Background/MarginContainer"]
+layout_mode = 2
+
+[node name="QuestTitle" type="Label" parent="QuestBox/Background/MarginContainer/QuestGrid"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.323722, 0.974176, 0.290578, 1)
+theme_override_font_sizes/font_size = 30
+text = "Quest Title"
+
+[node name="QuestContent" type="Label" parent="QuestBox/Background/MarginContainer/QuestGrid"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.903598, 0.903598, 0.903598, 1)
+theme_override_font_sizes/font_size = 24
+text = "Quest Description"
+autowrap_mode = 2
