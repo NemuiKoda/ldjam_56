@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://chdvovr4dc8i0"]
+[gd_scene load_steps=2 format=3 uid="uid://846h5mhlteig"]
 
-[ext_resource type="Script" path="res://ui/components/rent_timer.gd" id="1_6gfea"]
+[ext_resource type="Script" path="res://ui/components/rent_cost.gd" id="1_ulykf"]
 
-[node name="RentTimer" type="Control"]
+[node name="RentCost" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_6gfea")
+script = ExtResource("1_ulykf")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -20,8 +20,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Rent Due:"
-horizontal_alignment = 1
+text = "Rent Cost:"
 
 [node name="Label2" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

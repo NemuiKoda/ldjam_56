@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var move_speed : float = 250
 @onready var animation = $AnimationPlayer
 @onready var slushy_machine_timer = $slushy_machine_timer
+@onready var rent_timer = $rent_timer
 @onready var all_interactions = []
 @onready var interactLabel = $"Interaction components/InteractLabel"
 @onready var slush_machine = $"../slushMachine"
@@ -68,6 +69,8 @@ func _ready():
 
 
 func _process(_delta: float):
+	UiManager.set_timer(rent_timer.time_left)
+	UiManager.rent_cost(rent)
 	UiManager.set_money(money)
 	UiManager.set_blue_count(slushy_inventory[0])
 	UiManager.set_red_count(slushy_inventory[1])

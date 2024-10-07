@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d2rlnjpscqq8y"]
+[gd_scene load_steps=14 format=3 uid="uid://d2rlnjpscqq8y"]
 
 [ext_resource type="Script" path="res://entitys/slime/blue_slime.gd" id="1_phech"]
 [ext_resource type="Texture2D" uid="uid://b8qaifn5gv1fn" path="res://assets/OurAssets/BlueSlime.png" id="2_3nygh"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="3_xaofr"]
 [ext_resource type="PackedScene" uid="uid://dc8o6j1jtli2a" path="res://interactible/interaction/interaction_area.tscn" id="4_07nd1"]
 [ext_resource type="AudioStream" uid="uid://dshh135wis2kg" path="res://assets/sounds/slime_jump_down.mp3" id="4_fqeal"]
-
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nhk8n"]
 
@@ -133,7 +132,6 @@ interact_label = "BlueSlime"
 interact_type = "slime"
 interact_value = "blue"
 
-
 [node name="InteractionArea" parent="." instance=ExtResource("4_07nd1")]
 action_name = "catch"
 
@@ -146,4 +144,3 @@ pitch_scale = 2.0
 max_distance = 300.0
 panning_strength = 3.0
 bus = &"SFX"
-
