@@ -9,13 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://bntafodq0ncxe" path="res://assets/tilemap/TX Props.png" id="5_chedb"]
 [ext_resource type="Texture2D" uid="uid://bd5rhxlwehu8k" path="res://assets/tilemap/assets_version1.1.png" id="6_14a1w"]
 [ext_resource type="PackedScene" uid="uid://bbgekotruutm4" path="res://entitys/player/player.tscn" id="6_wsmm1"]
-
 [ext_resource type="PackedScene" path="res://ui/money.tscn" id="7_lcqwh"]
 [ext_resource type="Texture2D" uid="uid://vir6d6yrbs2p" path="res://assets/tilemap/assets.png" id="7_q861y"]
 [ext_resource type="PackedScene" path="res://ui/slushies.tscn" id="8_4etsp"]
 [ext_resource type="Texture2D" uid="uid://bbjen4itfxgvq" path="res://assets/tilemap/fence_version1.1.png" id="8_ichsg"]
 [ext_resource type="PackedScene" uid="uid://dkds6rp3a4db8" path="res://level/customer_slots.tscn" id="8_mg0jy"]
-[ext_resource type="PackedScene" path="res://ui/upgrades.tscn" id="9_2a0wo"]
+[ext_resource type="PackedScene" uid="uid://rcthmnow6wuw" path="res://ui/upgrades.tscn" id="9_2a0wo"]
 [ext_resource type="PackedScene" uid="uid://h6ad4s2iv6yi" path="res://entitys/customer/customer.tscn" id="9_mk5qq"]
 [ext_resource type="Texture2D" uid="uid://b7fjntoxvr6b7" path="res://assets/tilemap/TX Tileset Stone Ground2.png" id="9_scgkq"]
 [ext_resource type="PackedScene" uid="uid://ba1y2t7o3pkly" path="res://interactible/slushmachine/slush_machine.tscn" id="10_0g232"]
@@ -996,7 +995,6 @@ interact_value = "productionupgrade"
 
 [node name="Player" parent="." instance=ExtResource("6_wsmm1")]
 position = Vector2(63, 141)
-collision_layer = 1
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 

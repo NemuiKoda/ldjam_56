@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsk4gtjyxmxf2"
+path="res://.godot/imported/Fromage - Steven O'Brien (Must Credit, CC-BY, www.steven-obrien.net).mp3-15dd1294cfc2d743a32afe6d7b98e6f9.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/Fromage - Steven O'Brien (Must Credit, CC-BY, www.steven-obrien.net).mp3"
+dest_files=["res://.godot/imported/Fromage - Steven O'Brien (Must Credit, CC-BY, www.steven-obrien.net).mp3-15dd1294cfc2d743a32afe6d7b98e6f9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

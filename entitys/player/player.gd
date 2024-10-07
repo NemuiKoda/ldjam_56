@@ -22,6 +22,10 @@ extends CharacterBody2D
 #Inventory
 var slushy_inventory = [0,0,0,0,0,0,0] #[blue,red,green,cyan,yellow,purple,white]
 var money = 150
+var rent = 50
+
+var time_start = 0
+var slushies_sold = 0
 
 #Upgrades
 var maxmovementupgrade = 3
@@ -59,8 +63,11 @@ var color_to_produce = "blue"
 
 func _ready():
 	update_interactions()
+	time_start = Time.get_unix_time_from_system()
+	print(time_start)
 
-func _process(delta: float):
+
+func _process(_delta: float):
 	UiManager.set_money(money)
 	UiManager.set_blue_count(slushy_inventory[0])
 	UiManager.set_red_count(slushy_inventory[1])
@@ -74,7 +81,44 @@ func _process(delta: float):
 	container_left_time.set_animation_speed(productionupgrade[productionLevel][1])
 	container_middle_time.set_animation_speed(productionupgrade[productionLevel][1])
 	container_right_time.set_animation_speed(productionupgrade[productionLevel][1])
-	
+
+func play_walking_animation():
+	if !carrying_slime:
+		if catch_mode:
+			$Sprite2D.visible = true
+			$SpriteWalkingSlime.visible = false
+			animation.play("walking_net")
+		else:
+			$Sprite2D.visible = true
+			$SpriteWalkingSlime.visible = false
+			animation.play("walking_nothing")
+	else:
+		$Sprite2D.visible = false
+		$SpriteWalkingSlime.visible = true
+		if slimeColor == "blue":
+			animation.play("walking_blue")
+		elif slimeColor == "green":
+			animation.play("walking_green")
+		elif slimeColor == "red":
+			animation.play("walking_red")
+
+func play_idle_animation():
+	if !carrying_slime:
+		$Sprite2D.visible = true
+		$SpriteWalkingSlime.visible = false
+		if catch_mode:
+			animation.play("idle_net")
+		else:
+			animation.play("idle_nothing")
+	else:
+		$Sprite2D.visible = false
+		$SpriteWalkingSlime.visible = true
+		if slimeColor == "blue":
+			animation.play("idle_blue")
+		elif slimeColor == "green":
+			animation.play("idle_green")
+		elif slimeColor == "red":
+			animation.play("idle_red")
 
 func _physics_process(_delta):
 	var input_direction = Vector2(
@@ -92,28 +136,21 @@ func _physics_process(_delta):
 	# Animation
 	if !catching:
 		if input_direction.x == 1:
-			$Sprite2D.flip_h = false
-			if catch_mode:
-				animation.play("walking_net")
+			if !carrying_slime:
+				$Sprite2D.flip_h = false
 			else:
-				animation.play("walking")
-				
+				$SpriteWalkingSlime.flip_h = false
+			play_walking_animation()
 		elif input_direction.x == -1:
-			$Sprite2D.flip_h = true
-			if catch_mode:
-				animation.play("walking_net")
+			if !carrying_slime:
+				$Sprite2D.flip_h = true
 			else:
-				animation.play("walking")
+				$SpriteWalkingSlime.flip_h = true
+			play_walking_animation()
 		elif input_direction.y == 1 || input_direction.y == -1:
-			if catch_mode:
-				animation.play("walking_net")
-			else:
-				animation.play("walking")
+			play_walking_animation()
 		else:
-			if catch_mode:
-				animation.play("idle_net")
-			else:
-				animation.play("idle")
+			play_idle_animation()
 	
 	velocity = input_direction * move_speed
 	
@@ -121,6 +158,9 @@ func _physics_process(_delta):
 
 func catching_end():
 	catching = false
+
+func game_over():	
+	get_tree().change_scene_to_file("res://ui/game_over.tscn")
 
 #Interactionmethods
 ######################################################################
@@ -147,7 +187,7 @@ func execute_interaction():
 	if all_interactions:
 		var cur_interaction = all_interactions[0]
 		match cur_interaction.interact_type:
-			"slime" : 
+			"slime" :
 					if carrying_slime == false and catch_mode:
 						print("catch")
 						match cur_interaction.interact_value:
@@ -245,36 +285,43 @@ func execute_interaction():
 								slushy_inventory[0] = slushy_inventory[0] - 1
 								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
 								money += cur_interaction.get_parent().get_parent().getValue()
+								slushies_sold += 1
 						"RED":
 							if slushy_inventory[1] > 0:
 								slushy_inventory[1] = slushy_inventory[1] - 1
 								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
 								money += cur_interaction.get_parent().get_parent().getValue()
+								slushies_sold += 1
 						"GREEN":
 							if slushy_inventory[2] > 0:
 								slushy_inventory[2] = slushy_inventory[2] - 1
 								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
 								money += cur_interaction.get_parent().get_parent().getValue()
+								slushies_sold += 1
 						"CYAN": 
 							if slushy_inventory[3] > 0:
 								slushy_inventory[3] = slushy_inventory[3] - 1
 								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
 								money += cur_interaction.get_parent().get_parent().getValue()
+								slushies_sold += 1
 						"YELLOW":
 							if slushy_inventory[4] > 0:
 								slushy_inventory[4] = slushy_inventory[4] - 1
 								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
 								money += cur_interaction.get_parent().get_parent().getValue()
+								slushies_sold += 1
 						"PURPLE":
 							if slushy_inventory[5] > 0:
 								slushy_inventory[5] = slushy_inventory[5] - 1
 								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
 								money += cur_interaction.get_parent().get_parent().getValue()
+								slushies_sold += 1
 						"WHITE":
 							if slushy_inventory[6] > 0:
 								slushy_inventory[6] = slushy_inventory[6] - 1
 								cur_interaction.get_parent().get_parent().setReceivedOrder(true)
 								money += cur_interaction.get_parent().get_parent().getValue()
+								slushies_sold += 1
 
 func execute_interaction2():
 	print("F")
@@ -382,15 +429,28 @@ func runningProduction(color):
 	slush_machine.isProducing = false
 
 
-func _on_inside_area_entered(area: Area2D):
+func _on_inside_area_entered(_area: Area2D):
 	print("Area entered")
 	catch_mode = false
 
 
-func _on_inside_area_exited(area: Area2D):
+func _on_inside_area_exited(_area: Area2D):
 	print("Area left")
 	catch_mode = true
 
 
 func _on_slushy_machine_timer_timeout():	
 	runningProduction(color_to_produce)
+
+
+func _on_rent_timer_timeout():
+	if money < rent:
+		print("GAME OVER")
+		global.slushies_sold = slushies_sold
+		global.time_survived = Time.get_unix_time_from_system() - time_start
+		get_tree().change_scene_to_file("res://ui/game_over.tscn")
+	else:
+		print("RENT PAID")
+		$rent_paid.play()
+		money -= rent
+		rent = rent + 50

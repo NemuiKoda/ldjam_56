@@ -11,12 +11,13 @@ config_version=5
 [application]
 
 config/name="LDJam56"
-run/main_scene="res://level/main.tscn"
+run/main_scene="res://ui/Menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
+global="*res://ui/global.gd"
 UiManager="*res://ui/ui_manager.tscn"
 DialogManager="*res://ui/DialogManager.gd"
 
