@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://boxhqidhsigbr"]
+[gd_scene load_steps=12 format=3 uid="uid://d0p33qqp6j52v"]
 
 [ext_resource type="Script" path="res://entitys/slime/red_slime.gd" id="1_bmm61"]
 [ext_resource type="Texture2D" uid="uid://di0mqt63vk3hx" path="res://assets/OurAssets/RedSlime.png" id="2_freod"]
 [ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="3_glb3p"]
+[ext_resource type="PackedScene" uid="uid://dc8o6j1jtli2a" path="res://interactible/interaction/interaction_area.tscn" id="4_aryit"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nhk8n"]
 
@@ -80,6 +81,9 @@ _data = {
 "jump": SubResource("Animation_fp808")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_g840u"]
+radius = 29.0388
+
 [node name="red_slime" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_bmm61")
@@ -104,3 +108,9 @@ scale = Vector2(0.5, 0.5)
 interact_label = "RedSlime"
 interact_type = "slime"
 interact_value = "red"
+
+[node name="InteractionArea" parent="." instance=ExtResource("4_aryit")]
+action_name = "catch"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_g840u")

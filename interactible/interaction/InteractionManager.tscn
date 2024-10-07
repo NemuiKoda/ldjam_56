@@ -1,19 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbya0jca3tefd"]
+[gd_scene load_steps=3 format=3 uid="uid://cbya0jca3tefd"]
 
 [ext_resource type="Script" path="res://interactible/interaction/interaction_manager.gd" id="1_ws2qo"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqbf7"]
+bg_color = Color(0.165656, 0.165656, 0.165656, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
 [node name="InteractionManager" type="Node2D"]
+position = Vector2(845, 1000)
 script = ExtResource("1_ws2qo")
 
-[node name="Label" type="Label" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
 z_index = 20
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -108.0
-offset_right = 108.0
-offset_bottom = 33.0
+offset_left = -116.0
+offset_top = 964.0
+offset_right = 116.0
+offset_bottom = 1013.0
 grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tqbf7")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/MarginContainer"]
+z_index = 20
+layout_mode = 2
 text = "[E] TO INTERACT
 "
 horizontal_alignment = 1

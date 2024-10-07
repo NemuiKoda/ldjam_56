@@ -505,7 +505,6 @@ interact_value = "productionupgrade"
 
 [node name="Player" parent="." instance=ExtResource("6_wsmm1")]
 position = Vector2(63, 141)
-collision_layer = 1
 
 [node name="Camera2D2" type="Camera2D" parent="Player"]
 

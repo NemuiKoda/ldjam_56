@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2rlnjpscqq8y"]
+[gd_scene load_steps=12 format=3 uid="uid://d2rlnjpscqq8y"]
 
 [ext_resource type="Script" path="res://entitys/slime/blue_slime.gd" id="1_phech"]
 [ext_resource type="Texture2D" uid="uid://b8qaifn5gv1fn" path="res://assets/OurAssets/BlueSlime.png" id="2_3nygh"]
 [ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="3_xaofr"]
+[ext_resource type="PackedScene" uid="uid://dc8o6j1jtli2a" path="res://interactible/interaction/interaction_area.tscn" id="4_07nd1"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nhk8n"]
 
@@ -80,6 +81,9 @@ _data = {
 "jump": SubResource("Animation_fp808")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_mpiqv"]
+radius = 29.0043
+
 [node name="blue_slime" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_phech")
@@ -104,3 +108,9 @@ scale = Vector2(0.5, 0.5)
 interact_label = "BlueSlime"
 interact_type = "slime"
 interact_value = "blue"
+
+[node name="InteractionArea" parent="." instance=ExtResource("4_07nd1")]
+action_name = "catch"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_mpiqv")

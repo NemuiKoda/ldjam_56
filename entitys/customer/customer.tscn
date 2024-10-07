@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entitys/customer/customer.gd" id="1_r3ef4"]
 [ext_resource type="Texture2D" uid="uid://d4er8olhpflu8" path="res://assets/OurAssets/Chars.png" id="2_pyytr"]
 [ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="3_42t7o"]
-[ext_resource type="Script" path="res://interactible/interaction/interaction_area.gd" id="4_id3km"]
+[ext_resource type="PackedScene" uid="uid://dc8o6j1jtli2a" path="res://interactible/interaction/interaction_area.tscn" id="4_ma56w"]
 
 [sub_resource type="Animation" id="Animation_80mr7"]
 length = 0.001
@@ -207,7 +207,7 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m00pt"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jm32t"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ywfc2"]
 
 [node name="customer" type="CharacterBody2D"]
 script = ExtResource("1_r3ef4")
@@ -242,15 +242,13 @@ monitoring = true
 interact_type = "customer"
 interact_value = "10"
 
-[node name="InteractionArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 2
-script = ExtResource("4_id3km")
+[node name="InteractionArea" parent="." instance=ExtResource("4_ma56w")]
+position = Vector2(0, -60)
+scale = Vector2(1, 6)
+action_name = "sell"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
-position = Vector2(1, -68)
-scale = Vector2(1.48685, 10.0528)
-shape = SubResource("CircleShape2D_jm32t")
+shape = SubResource("CircleShape2D_ywfc2")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="InteractionComponents/InteractArea" to="." method="_on_interact_area_body_entered"]

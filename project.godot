@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 InteractionManager="*res://interactible/interaction/InteractionManager.tscn"
 DialogManager="*res://ui/DialogManager.gd"
-UiManager="*res://ui/ui_manager.gd"
+UiManager="*res://ui/ui_manager.tscn"
 
 [display]
 

@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://blkr0aky4xlkj"]
+[gd_scene load_steps=6 format=3 uid="uid://blkr0aky4xlkj"]
 
 [ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="1_c6veq"]
-[ext_resource type="Texture2D" uid="uid://b0cmq5t0b3qb2" path="res://assets/OurAssets/Props.png" id="2_xwehq"]
+[ext_resource type="Texture2D" uid="uid://dg32q6d1bt4sn" path="res://assets/OurAssets/Props.png" id="2_xwehq"]
+[ext_resource type="PackedScene" uid="uid://dc8o6j1jtli2a" path="res://interactible/interaction/interaction_area.tscn" id="3_kcxym"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_70by7"]
 atlas = ExtResource("2_xwehq")
 region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ipd34"]
 
 [node name="Slushy_Red" type="StaticBody2D"]
 
@@ -18,3 +21,10 @@ interact_value = "red_slushy"
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_70by7")
+
+[node name="InteractionArea" parent="." instance=ExtResource("3_kcxym")]
+action_name = "pick up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+scale = Vector2(2.86783, 2.86783)
+shape = SubResource("CircleShape2D_ipd34")

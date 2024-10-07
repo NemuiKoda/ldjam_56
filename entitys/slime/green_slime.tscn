@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1pfpv0o0uhdk"]
+[gd_scene load_steps=12 format=3 uid="uid://b1pfpv0o0uhdk"]
 
 [ext_resource type="Script" path="res://entitys/slime/green_slime.gd" id="1_d3yex"]
 [ext_resource type="Texture2D" uid="uid://dymikrsegawta" path="res://assets/OurAssets/GreenSlime.png" id="2_ahwt0"]
-[ext_resource type="PackedScene" uid="uid://gt1ydhfqpctr" path="res://interactible/InteractArea.tscn" id="3_w2515"]
+[ext_resource type="PackedScene" uid="uid://dex23khdct4bh" path="res://interactible/InteractArea.tscn" id="3_w2515"]
+[ext_resource type="PackedScene" uid="uid://dc8o6j1jtli2a" path="res://interactible/interaction/interaction_area.tscn" id="4_upunb"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nhk8n"]
 
@@ -80,6 +81,9 @@ _data = {
 "jump": SubResource("Animation_fp808")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_0u315"]
+radius = 29.5042
+
 [node name="green_slime" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 script = ExtResource("1_d3yex")
@@ -104,3 +108,9 @@ scale = Vector2(0.5, 0.5)
 interact_label = "GreenSlime"
 interact_type = "slime"
 interact_value = "green"
+
+[node name="InteractionArea" parent="." instance=ExtResource("4_upunb")]
+action_name = "catch"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_0u315")
